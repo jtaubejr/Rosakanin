@@ -28,6 +28,10 @@ def leo(request):
 def negan(request):
     return render(request, 'compendiums/negan.html', {'title': 'Negan'})
 
+#This is the Nina Williams pageself.
+def nina(request):
+    return render(request, 'compendiums/nina.html', {'title': 'Nina'})
+
 #This is the Zafina pageself.
 def zafina(request):
     return render(request, 'compendiums/zafina.html', {'title': 'Zafina'})
