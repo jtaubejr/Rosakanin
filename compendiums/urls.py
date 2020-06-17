@@ -10,5 +10,7 @@ urlpatterns = [
     path('Leo_Kliesen/', views.leo, name='compendiums-leo'),
     path('Negan/', views.negan, name='compendiums-negan'),
     path('Nina_Williams/', views.nina, name='compendiums-nina'),
-    path('Zafina/', views.zafina, name='compendiums-zafina')
+    path('Zafina/', views.zafina, name='compendiums-zafina'),
+    path('Seth/', views.seth, name='compendiums-seth'),
+    path('Seth/Combos', views.sethCombos, name='compendiums-seth-combos')
 ]

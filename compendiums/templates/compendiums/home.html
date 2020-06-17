@@ -1,58 +1,78 @@
 {% extends "compendiums/base.html" %}
 {% block content %}
-    <div style="text-align:center">
-        <h1>Character Compendiums Homepage</h1>
-        <p>
-            Use the Characters dropdown above or select from the roster below to visit that character's compendium.
-        </p>
+    <div class="container">
+        <div style="text-align:center">
+            <h1>Character Compendiums Homepage</h1>
+            <p>
+                Use the Characters dropdown above or select from the roster below to visit that character's compendium.
+            </p>
 
-        <table id ="charTable" class = "table table-sm" style="width: 100%;">
-            <tbody>
-                <tr>
-                    <td>
-                        <figure>
-                            <a href="{% url 'compendiums-anna' %}"><img src="https://i.imgur.com/qkILep3.png"/><figcaption>Anna Williams</figcaption></a>
-                        </figure>
-                    </td>
-                    <td>
-                        <figure>
-                            <a href="{% url 'compendiums-armor_king' %}"><img src="https://i.imgur.com/22mAsBK.png"/><figcaption>Armor King</figcaption></a>
-                        </figure>
-                    </td>
-                    <td>
-                        <figure>
-                            <a href="{% url 'compendiums-eliza' %}"><img src="https://i.imgur.com/qG9hDXB.png"/><figcaption>Eliza</figcaption></a>
-                        </figure>
-                    </td>
-                    <td>
-                        <figure>
-                            <a href="{% url 'compendiums-julia' %}"><img src="https://i.imgur.com/JI6YKM9.png"/><figcaption>Julia Chang</figcaption></a>
-                        </figure>
-                    </td>
-                    <td>
-                        <figure>
-                            <a href="{% url 'compendiums-leo' %}"><img src="https://i.imgur.com/cUSQg2Q.png"/><figcaption>Leo Kliesen</figcaption></a>
-                        </figure>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <figure>
-                            <a href="{% url 'compendiums-negan' %}"><img src="https://i.imgur.com/lySQMcL.png"/><figcaption>Negan</figcaption></a>
-                        </figure>
-                    </td>
-                    <td>
-                        <figure>
-                            <a href="{% url 'compendiums-nina' %}"><img src="https://i.imgur.com/1f7NrLe.png"/><figcaption>Nina Williams</figcaption></a>
-                        </figure>
-                    </td>
-                    <td>
-                        <figure>
-                            <a href="{% url 'compendiums-zafina' %}"><img src="https://i.imgur.com/ItSD5bo.png"/><figcaption>Zafina</figcaption></a>
-                        </figure>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+            <table id ="charTable" class = "table table-sm" style="width: 100%;">
+                <thead>
+                    <h1>Tekken 7</h1>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <figure>
+                                <a href="{% url 'compendiums-anna' %}"><img src="https://i.imgur.com/qkILep3.png"/><figcaption>Anna Williams</figcaption></a>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure>
+                                <a href="{% url 'compendiums-armor_king' %}"><img src="https://i.imgur.com/22mAsBK.png"/><figcaption>Armor King</figcaption></a>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure>
+                                <a href="{% url 'compendiums-eliza' %}"><img src="https://i.imgur.com/qG9hDXB.png"/><figcaption>Eliza</figcaption></a>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure>
+                                <a href="{% url 'compendiums-julia' %}"><img src="https://i.imgur.com/JI6YKM9.png"/><figcaption>Julia Chang</figcaption></a>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure>
+                                <a href="{% url 'compendiums-leo' %}"><img src="https://i.imgur.com/cUSQg2Q.png"/><figcaption>Leo Kliesen</figcaption></a>
+                            </figure>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <figure>
+                                <a href="{% url 'compendiums-negan' %}"><img src="https://i.imgur.com/lySQMcL.png"/><figcaption>Negan</figcaption></a>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure>
+                                <a href="{% url 'compendiums-nina' %}"><img src="https://i.imgur.com/1f7NrLe.png"/><figcaption>Nina Williams</figcaption></a>
+                            </figure>
+                        </td>
+                        <td>
+                            <figure>
+                                <a href="{% url 'compendiums-zafina' %}"><img src="https://i.imgur.com/ItSD5bo.png"/><figcaption>Zafina</figcaption></a>
+                            </figure>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table id ="charTableSFV" class = "table table-sm" style="width: 100%;">
+                <thead>
+                    <h1>Street Fighter V</h1>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <figure>
+                                <a href="{% url 'compendiums-seth' %}"><img src="https://i.imgur.com/B9VhjTA.png"/><figcaption>Seth</figcaption></a>
+                            </figure>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 {% endblock content %}

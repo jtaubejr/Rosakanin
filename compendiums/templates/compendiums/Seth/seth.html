@@ -1,0 +1,1115 @@
+{% extends "compendiums/base.html" %}
+{% block content %}
+    <div style="text-align:center">
+        <h1>Seth</h1>
+        <a href="{% url 'compendiums-seth-combos' %}">Combos</a>
+    </div>
+
+    <div style="padding:40px;">
+        <style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: separate;
+              border-spacing: 0px;
+              width: 100%;
+            }
+
+            td {
+              border: 1px solid black;
+              padding: 8px;
+            }
+
+            tr:nth-child(odd) {
+                background-color: #F6F6F6
+            }
+
+            th {
+                border: 1px solid white;
+                color: white;
+                background-color: #000000;
+                position: sticky;
+                top: 0;
+            }
+
+            .header {
+                background-color: #DDDDDD
+                position:sticky;
+                top: 32px;
+            }
+
+            th div {
+                height: 28px;
+                overflow: hidden;
+            }
+
+            tr.noBorder td {
+                border: 0;
+            }
+        </style>
+        <h1>Frame Data</h1>
+        <table id ="frameTable">
+            <thead>
+                <tr style="text-align:center;">
+                    <th rowspan="2">Move Name</th>
+                    <th colspan="3"><div>Frame</div></th>
+                    <th colspan="2"><div>Recovery</div></th>
+                    <th colspan="2"><div>V-Trigger Recovery</div></th>
+                    <th rowspan="2">Cancel Info</th>
+                    <th rowspan="2">Damage</th>
+                    <th rowspan="2">Stun</th>
+                    <th rowspan="2">Meter Gain<BR>(Whiff/Hit)</th>
+                    <th rowspan="2">Properties</th>
+                    <th rowspan="2">Comments</th>
+                </tr>
+                <tr style="text-align:center">
+                    <th class="header">Startup</th>
+                    <th class="header">Active</th>
+                    <th class="header">Recovery</th>
+                    <th class="header">On<BR>Hit</th>
+                    <th class="header">On<BR>Block</th>
+                    <th class="header">On<BR>Hit</th>
+                    <th class="header">On<BR>Block</th>
+                </tr>
+            </thead>
+
+            <!-- Normal Attacks -->
+            <tbody style="text-align:center;" id="normalAttacks">
+                <tr style="background-color:#DDDDDD" class="noBorder">
+                    <td><b>Normal Moves</b></td>
+                    <td colspan="2"><a href="#uniqueAttacks">Unique</a></td>
+                    <td colspan="2"><a href="#normalThrows">Throws</a></td>
+                    <td colspan="2"><a href="#vSystem">V-System</a></td>
+                    <td colspan="2"><a href="#specialMoves">Specials</a></td>
+                    <td colspan="2"><a href="#criticalArt">CA</a></td>
+                    <td colspan="3" style="text-align:left"><a href="{% url 'compendiums-seth-combos' %}">Combos</a></td>
+                </tr>
+                <tr>
+                    <td>Standing LP</td>
+                    <td>4</td>
+                    <td>3</td>
+                    <td>6</td>
+                    <td>4</td>
+                    <td>3</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>S,CA,VT</td>
+                    <td>30</td>
+                    <td>70</td>
+                    <td>0/20</td>
+                    <td>High</td>
+                    <td align="left"></td>
+                </tr>
+                <tr>
+                    <td>Standing MP</td>
+                    <td>5</td>
+                    <td>3</td>
+                    <td>16</td>
+                    <td>2</td>
+                    <td>-2</td>
+                    <td>9</td>
+                    <td>5</td>
+                    <td>VT,VS*</td>
+                    <td>50</td>
+                    <td>100</td>
+                    <td>0/30</td>
+                    <td>High</td>
+                    <td align="left">On whiff<BR>VS*:Can be cancelled with [VS1] Install Art on hit or guard.</td>
+                </tr>
+                <tr>
+                    <td>Standing HP</td>
+                    <td>7</td>
+                    <td>3</td>
+                    <td>23</td>
+                    <td>2</td>
+                    <td>-4</td>
+                    <td>16</td>
+                    <td>7</td>
+                    <td>S,CA,VT</td>
+                    <td>80</td>
+                    <td>150</td>
+                    <td>0/50</td>
+                    <td>High</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Standing LK</td>
+                    <td>4</td>
+                    <td>3</td>
+                    <td>11</td>
+                    <td>4</td>
+                    <td>3</td>
+                    <td>6</td>
+                    <td>5</td>
+                    <td>S,CA,VT</td>
+                    <td>40</td>
+                    <td>70</td>
+                    <td>0/20</td>
+                    <td>High</td>
+                    <td align="left"></td>
+                </tr>
+                <tr>
+                    <td>Standing MK</td>
+                    <td>7</td>
+                    <td>3</td>
+                    <td>18</td>
+                    <td>1</td>
+                    <td>-2</td>
+                    <td>10</td>
+                    <td>7</td>
+                    <td>VT,VS*</td>
+                    <td>70</td>
+                    <td>100</td>
+                    <td>0/30</td>
+                    <td>High</td>
+                    <td align="left">Foot will not hit a crouching opponent.<BR>VS*:Can be cancelled with [VS1] Install Art on hit or guard.</td>
+                </tr>
+                <tr>
+                    <td>Standing HK</td>
+                    <td>10</td>
+                    <td>9</td>
+                    <td>22</td>
+                    <td>KND</td>
+                    <td>-6</td>
+                    <td>KND</td>
+                    <td>8</td>
+                    <td>S*,CA*,VT*</td>
+                    <td>80</td>
+                    <td>150</td>
+                    <td>0/50</td>
+                    <td>High</td>
+                    <td align="left">Second hit will not hit crouching opponents.<BR>S*,VT*,CA*:Only possible during 2nd attack.<BR>Forced standing effect on 1st hit.<BR>Causes blowback knockdown on airborne hit.</td>
+                </tr>
+                <tr>
+                    <td>Crouching LP</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>8</td>
+                    <td>4</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>0</td>
+                    <td>S,CA,VT</td>
+                    <td>30</td>
+                    <td>70</td>
+                    <td>0/20</td>
+                    <td>High</td>
+                    <td align="left"></td>
+                </tr>
+                <tr>
+                    <td>Crouching MP</td>
+                    <td>6</td>
+                    <td>3</td>
+                    <td>14</td>
+                    <td>5</td>
+                    <td>2</td>
+                    <td>10</td>
+                    <td>7</td>
+                    <td>S,CA,VT</td>
+                    <td>60</td>
+                    <td>100</td>
+                    <td>0/30</td>
+                    <td>High</td>
+                    <td align="left"></td>
+                </tr>
+                <tr>
+                    <td>Crouching HP</td>
+                    <td>12</td>
+                    <td>4</td>
+                    <td>26</td>
+                    <td>KND</td>
+                    <td>-10</td>
+                    <td>KND</td>
+                    <td>8</td>
+                    <td>VT,VS*</td>
+                    <td>80</td>
+                    <td>150</td>
+                    <td>0/50</td>
+                    <td>Low</td>
+                    <td align="left">Triggers Crush Counter (KND).<BR>VS*:Can be cancelled with [VS1] Install Art on hit or guard.</td>
+                </tr>
+                <tr>
+                    <td>Crouching LK</td>
+                    <td>4</td>
+                    <td>3</td>
+                    <td>7</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>0</td>
+                    <td>-1</td>
+                    <td>VT,VS*</td>
+                    <td>20</td>
+                    <td>70</td>
+                    <td>0/20</td>
+                    <td>Low</td>
+                    <td align="left">VS*:Can be cancelled with [VS1] Install Art on hit or guard.</td>
+                </tr>
+                <tr>
+                    <td>Crouching MK</td>
+                    <td>7</td>
+                    <td>3</td>
+                    <td>13</td>
+                    <td>2</td>
+                    <td>-2</td>
+                    <td>6</td>
+                    <td>1</td>
+                    <td>S,CA,VT</td>
+                    <td>60</td>
+                    <td>100</td>
+                    <td>0/30</td>
+                    <td>Low</td>
+                    <td align="left"></td>
+                </tr>
+                <tr>
+                    <td>Crouching HK</td>
+                    <td>11</td>
+                    <td>4</td>
+                    <td>22</td>
+                    <td>2</td>
+                    <td>-4</td>
+                    <td>14</td>
+                    <td>8</td>
+                    <td>CA,VT,VS*</td>
+                    <td>80</td>
+                    <td>150</td>
+                    <td>0/50</td>
+                    <td>High</td>
+                    <td align="left">VS*:Can be cancelled with [VS1] Install Art on hit or guard.</td>
+                </tr>
+                <tr>
+                    <td>Jumping LP</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>40</td>
+                    <td>70</td>
+                    <td>0/20</td>
+                    <td>Mid</td>
+                    <td align="left"></td>
+                </tr>
+                <tr>
+                    <td>Jumping MP</td>
+                    <td>7</td>
+                    <td>6</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>S</td>
+                    <td>70</td>
+                    <td>100</td>
+                    <td>0/30</td>
+                    <td>Mid/High</td>
+                    <td align="left">Causes blowback knockdown on airborne hit.</td>
+                </tr>
+                <tr>
+                    <td>Jumping HP</td>
+                    <td>9</td>
+                    <td>6</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>90</td>
+                    <td>150</td>
+                    <td>0/50</td>
+                    <td>Mid</td>
+                    <td align="left"></td>
+                </tr>
+                <tr>
+                    <td>Jumping LK</td>
+                    <td>4</td>
+                    <td>6</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>40</td>
+                    <td>70</td>
+                    <td>0/20</td>
+                    <td>Mid</td>
+                    <td align="left">Can cross up.</td>
+                </tr>
+                <tr>
+                    <td>Jumping MK</td>
+                    <td>7</td>
+                    <td>7</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>60</td>
+                    <td>100</td>
+                    <td>0/30</td>
+                    <td>Mid</td>
+                    <td align="left"></td>
+                </tr>
+                <tr>
+                    <td>Jumping HK</td>
+                    <td>10</td>
+                    <td>5</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>80</td>
+                    <td>150</td>
+                    <td>0/50</td>
+                    <td>Mid</td>
+                    <td align="left"></td>
+                </tr>
+            </tbody>
+
+            <!-- Unique Attacks -->
+            <tbody style="text-align:center;" id="uniqueAttacks">
+                <tr style="background-color:#DDDDDD" class="noBorder">
+                    <td><b>Unique Attacks</b></td>
+                    <td colspan="2"><a href="#normalAttacks">Normals</a></td>
+                    <td colspan="2"><a href="#normalThrows">Throws</a></td>
+                    <td colspan="2"><a href="#vSystem">V-System</a></td>
+                    <td colspan="2"><a href="#specialMoves">Specials</a></td>
+                    <td colspan="2"><a href="#criticalArt">CA</a></td>
+                    <td colspan="3" style="text-align:left"><a href="{% url 'compendiums-seth-combos' %}">Combos</a></td>
+                </tr>
+                <tr>
+                    <td>Step Shoot<BR>Forward MP</td>
+                    <td>9</td>
+                    <td>3</td>
+                    <td>17</td>
+                    <td>2</td>
+                    <td>-2</td>
+                    <td>10</td>
+                    <td>6</td>
+                    <td>VT</td>
+                    <td>60</td>
+                    <td>100</td>
+                    <td>0/30</td>
+                    <td>High</td>
+                    <td align="left"></td>
+                </tr>
+                <tr>
+                    <td>Hazard Blow<BR>Forward HP</td>
+                    <td>20</td>
+                    <td>3</td>
+                    <td>23</td>
+                    <td>1</td>
+                    <td>-4</td>
+                    <td>14</td>
+                    <td>9</td>
+                    <td>CA,VT</td>
+                    <td>90</td>
+                    <td>150</td>
+                    <td>0/50</td>
+                    <td>High</td>
+                    <td align="left">Triggers Crush Counter (crumple)</td>
+                </tr>
+                <tr>
+                    <td>Head Hunter<BR>Forward HK</td>
+                    <td>23</td>
+                    <td>2</td>
+                    <td>21</td>
+                    <td>1</td>
+                    <td>-7</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td></td>
+                    <td>80</td>
+                    <td>150</td>
+                    <td>0/50</td>
+                    <td>Mid</td>
+                    <td align="left"></td>
+                </tr>
+                <tr>
+                    <td>Turning Slicer<BR>Down+Forward HK</td>
+                    <td>23</td>
+                    <td>3</td>
+                    <td>15</td>
+                    <td>4</td>
+                    <td>-2</td>
+                    <td>10</td>
+                    <td>4</td>
+                    <td>VT</td>
+                    <td>90</td>
+                    <td>150</td>
+                    <td>0/50</td>
+                    <td>Low</td>
+                    <td align="left">Triggers Crush Counter (+14F)</td>
+                </tr>
+                <tr>
+                    <td>Twin Claw<BR>s.MP > s.HP</td>
+                    <td>10</td>
+                    <td>4</td>
+                    <td>28</td>
+                    <td>-5</td>
+                    <td>-12</td>
+                    <td>4</td>
+                    <td>-3</td>
+                    <td>S*,VT,VS*</td>
+                    <td>60</td>
+                    <td>100</td>
+                    <td>0/30</td>
+                    <td>High</td>
+                    <td align="left">Forces stand.<BR>S*,VS*:Only on hit.</td>
+                </tr>
+                <tr>
+                    <td>Tanden Combination (VS1)<BR>s.MP > s.HP > on hit VS1</td>
+                    <td>18</td>
+                    <td>25</td>
+                    <td>19</td>
+                    <td>2</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>VS*</td>
+                    <td>10</td>
+                    <td>0</td>
+                    <td></td>
+                    <td>High</td>
+                    <td align="left">VS*:Transferrable to [VS1] Tanden Install on hit or guard.</td>
+                </tr>
+                <tr>
+                    <td>Shoot Slicer<BR>Forward MP > s.HK</td>
+                    <td>11</td>
+                    <td>3</td>
+                    <td>21</td>
+                    <td>2</td>
+                    <td>-5</td>
+                    <td>12</td>
+                    <td>5</td>
+                    <td>VT</td>
+                    <td>60</td>
+                    <td>80</td>
+                    <td>0/30</td>
+                    <td>High</td>
+                    <td align="left"></td>
+                </tr>
+                <tr>
+                    <td>Fatal Rush<BR>Forward MP > s.HK > s.HP</td>
+                    <td>12</td>
+                    <td>3</td>
+                    <td>29</td>
+                    <td>KND</td>
+                    <td>-12</td>
+                    <td>KND</td>
+                    <td>8</td>
+                    <td>VT</td>
+                    <td>70</td>
+                    <td>100</td>
+                    <td>0/30</td>
+                    <td>High</td>
+                    <td align="left"></td>
+                </tr>
+            </tbody>
+
+            <!-- Normal Throws -->
+            <tbody style="text-align:center;" id="normalThrows">
+                <tr style="background-color:#DDDDDD" class="noBorder">
+                    <td><b>Normal Throws</b></td>
+                    <td colspan="2"><a href="#normalAttacks">Normals</a></td>
+                    <td colspan="2"><a href="#uniqueAttacks">Unique</a></td>
+                    <td colspan="2"><a href="#vSystem">V-System</a></td>
+                    <td colspan="2"><a href="#specialMoves">Specials</a></td>
+                    <td colspan="2"><a href="#criticalArt">CA</a></td>
+                    <td colspan="3" style="text-align:left"><a href="{% url 'compendiums-seth-combos' %}">Combos</a></td>
+                </tr>
+                <tr>
+                    <td>Death Throw<BR>Forward or Neutral LP+LK</td>
+                    <td>5</td>
+                    <td>3</td>
+                    <td>17</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>130</td>
+                    <td>150</td>
+                    <td>0/70</td>
+                    <td>Throw</td>
+                    <td align="left"></td>
+                </tr>
+                <tr>
+                    <td>Death Throw<BR>Back LP+LK</td>
+                    <td>5</td>
+                    <td>3</td>
+                    <td>17</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>130</td>
+                    <td>150</td>
+                    <td>0/100</td>
+                    <td>Throw</td>
+                    <td align="left"></td>
+                </tr>
+            </tbody>
+
+            <!-- V-System -->
+            <tbody style="text-align:center;" id="vSystem">
+                <tr style="background-color:#DDDDDD" class="noBorder">
+                    <td><b>V-System</b></td>
+                    <td colspan="2"><a href="#normalAttacks">Normals</a></td>
+                    <td colspan="2"><a href="#uniqueAttacks">Unique</a></td>
+                    <td colspan="2"><a href="#normalThrows">Throws</a></td>
+                    <td colspan="2"><a href="#specialMoves">Specials</a></td>
+                    <td colspan="2"><a href="#criticalArt">CA</a></td>
+                    <td colspan="3" style="text-align:left"><a href="{% url 'compendiums-seth-combos' %}">Combos</a></td>
+                </tr>
+                <tr>
+                    <td>[VS1] Tanden Engine<BR>MP+MK</td>
+                    <td>20</td>
+                    <td>25</td>
+                    <td>21</td>
+                    <td>2</td>
+                    <td>-2</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>10</td>
+                    <td>0</td>
+                    <td></td>
+                    <td>High</td>
+                    <td align="left">28 frames of projectile invincibility after hit or guard.</td>
+                </tr>
+                <tr>
+                    <td>[VS1] Tanden Install<BR>MP+MK > P</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>25</td>
+                    <td>KND</td>
+                    <td>-16</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>60</td>
+                    <td>0</td>
+                    <td>V-Gauge<BR>0/60</td>
+                    <td>High</td>
+                    <td align="left">1F-8F projectile invincibility.</td>
+                </tr>
+                <tr>
+                    <td>[VS2] Tanden Booster<BR>MP+MK</td>
+                    <td></td>
+                    <td></td>
+                    <td>49</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td align="left"></td>
+                </tr>
+                <tr>
+                    <td>[VS2] Tanden Booster (Stop)<BR>MP+MK > MP+MK</td>
+                    <td></td>
+                    <td></td>
+                    <td>19</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td align="left"></td>
+                </tr>
+                <tr>
+                    <td>[VS2] Hecatoncheires Glide<BR>MP+MK > qcf+P</td>
+                    <td>14</td>
+                    <td>16</td>
+                    <td>22</td>
+                    <td>2</td>
+                    <td>-2</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>100</td>
+                    <td>120</td>
+                    <td>V-Gauge<BR>0/100</td>
+                    <td>High</td>
+                    <td align="left"></td>
+                </tr>
+                <tr>
+                    <td>[VS2] Mad Spiral<BR>MP+MK > dp+P</td>
+                    <td>7</td>
+                    <td>18</td>
+                    <td>47</td>
+                    <td>KND</td>
+                    <td>-39</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>120</td>
+                    <td>150</td>
+                    <td>V-Gauge<BR>0/100</td>
+                    <td>High</td>
+                    <td align="left">1F-24F projectile invincibility.</td>
+                </tr>
+                <tr>
+                    <td>[VS2] Spin Pendulum<BR>MP+MK > qcb+K</td>
+                    <td>5</td>
+                    <td>13</td>
+                    <td>25</td>
+                    <td>KND</td>
+                    <td>-9</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>80</td>
+                    <td>120</td>
+                    <td>V-Gauge<BR>0/100</td>
+                    <td>High</td>
+                    <td align="left">4F-24F projectile invincibility.</td>
+                </tr>
+                <tr>
+                    <td>Tanden Ignition<BR>HP+HK</td>
+                    <td>1</td>
+                    <td></td>
+                    <td>10</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>V-Gauge<BR>-900/0</td>
+                    <td></td>
+                    <td align="left">V-Gauge Timer + 4000F.<BR>While active, various attacks are added to Hecatoncheires, Mad Cradle, Cruel Disaster, and Annihilate Sword.</td>
+                </tr>
+                <tr>
+                    <td>Calamity Shutter<BR>(During Guard) f+AP</td>
+                    <td>17</td>
+                    <td>2</td>
+                    <td>24</td>
+                    <td>KND</td>
+                    <td>-2</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>60</td>
+                    <td>0</td>
+                    <td>V-Gauge<BR>-300/0</td>
+                    <td>High</td>
+                    <td align="left">1F-31F attack and projectile invincibility.<BR>Recover 200 stun upon activation.</td>
+                </tr>
+            </tbody>
+
+            <!-- Special Moves -->
+            <tbody style="text-align:center;" id="specialMoves">
+                <tr style="background-color:#DDDDDD" class="noBorder">
+                    <td><b>Special Moves</b></td>
+                    <td colspan="2"><a href="#normalAttacks">Normals</a></td>
+                    <td colspan="2"><a href="#uniqueAttacks">Unique</a></td>
+                    <td colspan="2"><a href="#normalThrows">Throws</a></td>
+                    <td colspan="2"><a href="#vSystem">V-System</a></td>
+                    <td colspan="2"><a href="#criticalArt">CA</a></td>
+                    <td colspan="3" style="text-align:left"><a href="{% url 'compendiums-seth-combos' %}">Combos</a></td>
+                </tr>
+                <tr>
+                    <td>L Hecatoncheires<BR>qcf+LP</td>
+                    <td>11</td>
+                    <td>8</td>
+                    <td>20</td>
+                    <td>2</td>
+                    <td>-4</td>
+                    <td>12</td>
+                    <td>6</td>
+                    <td>CA*,VT*,VS*</td>
+                    <td>80</td>
+                    <td>120</td>
+                    <td>15/20</td>
+                    <td>High</td>
+                    <td align="left">CA*,V*:Only possible during 4th attack.<BR>VS*:Second and fourth attacks can be cancelled with [VS1] Install Art on hit or guard.</td>
+                </tr>
+                <tr>
+                    <td>M Hecatoncheires<BR>qcf+MP</td>
+                    <td>17</td>
+                    <td>12</td>
+                    <td>20</td>
+                    <td>2</td>
+                    <td>-4</td>
+                    <td>12</td>
+                    <td>6</td>
+                    <td>CA*,VT*,VS*</td>
+                    <td>90</td>
+                    <td>120</td>
+                    <td>15/30</td>
+                    <td>High</td>
+                    <td align="left">CA*,VT*:Only possible during 6th attack.<BR>VS*:Fourth and sixth attacks can be cancelled with [VS1] Install Art on hit or guard.</td>
+                </tr>
+                <tr>
+                    <td>H Hecatoncheires<BR>qcf+HP</td>
+                    <td>25</td>
+                    <td>16</td>
+                    <td>20</td>
+                    <td>3</td>
+                    <td>-2</td>
+                    <td>13</td>
+                    <td>8</td>
+                    <td>CA*,VT*,VS*</td>
+                    <td>100</td>
+                    <td>120</td>
+                    <td>15/40</td>
+                    <td>High</td>
+                    <td align="left">CA*,VT*:Only possible during 8th attack.<BR>VS*:Sixth and eighth attacks can be cancelled with [VS1] Install Art on hit or guard.</td>
+                </tr>
+                <tr>
+                    <td>EX Hecatoncheires<BR>qcf+PP</td>
+                    <td>10</td>
+                    <td>16</td>
+                    <td>24</td>
+                    <td>KND</td>
+                    <td>-2</td>
+                    <td>KND</td>
+                    <td>12</td>
+                    <td>VT*,VS*</td>
+                    <td>120</td>
+                    <td>150</td>
+                    <td>-300/0</td>
+                    <td>High</td>
+                    <td align="left">On guard or miss, the move ends with the eighth attack.<BR>VT*:Only possible on eighth/ninth attack.<BR>VS*:Can be cancelled with [VS1] Install Art on eighth/ninth hit on guard.</td>
+                </tr>
+                <tr>
+                    <td>L Mad Cradle<BR>dp+LP</td>
+                    <td>4</td>
+                    <td>10</td>
+                    <td>33</td>
+                    <td>KND</td>
+                    <td>-25</td>
+                    <td></td>
+                    <td></td>
+                    <td>CA</td>
+                    <td>90</td>
+                    <td>150</td>
+                    <td>15/40</td>
+                    <td>High</td>
+                    <td align="left">1F-3F throw invincibility.</td>
+                </tr>
+                <tr>
+                    <td>M Mad Cradle<BR>dp+MP</td>
+                    <td>5</td>
+                    <td>10</td>
+                    <td>41</td>
+                    <td>KND</td>
+                    <td>-33</td>
+                    <td></td>
+                    <td></td>
+                    <td>CA</td>
+                    <td>110</td>
+                    <td>150</td>
+                    <td>15/40</td>
+                    <td>High</td>
+                    <td align="left">1F-6F invincible to mid-air attacks.</td>
+                </tr>
+                <tr>
+                    <td>H Mad Cradle<BR>dp+HP</td>
+                    <td>10</td>
+                    <td>10</td>
+                    <td>49</td>
+                    <td>KND</td>
+                    <td>-41</td>
+                    <td></td>
+                    <td></td>
+                    <td>CA</td>
+                    <td>120</td>
+                    <td>150</td>
+                    <td>15/40</td>
+                    <td>High</td>
+                    <td align="left">1F-10F invincible to mid-air attacks.</td>
+                </tr>
+                <tr>
+                    <td>EX Mad Cradle<BR>qcf+PP</td>
+                    <td>4</td>
+                    <td>16</td>
+                    <td>45</td>
+                    <td>KND</td>
+                    <td>-40</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>150</td>
+                    <td>150</td>
+                    <td>-300/0</td>
+                    <td>High</td>
+                    <td align="left">1F-9F full invincibility.</td>
+                </tr>
+                <tr>
+                    <td>L Cruel Disaster<BR>qcb+LK</td>
+                    <td>14</td>
+                    <td>3</td>
+                    <td>26</td>
+                    <td>KND</td>
+                    <td>-8</td>
+                    <td></td>
+                    <td></td>
+                    <td>CA,VS*</td>
+                    <td>80</td>
+                    <td>100</td>
+                    <td>15/40</td>
+                    <td>High</td>
+                    <td align="left">4F-11F projectile invincibility.<BR>VS*:Can be cancelled with [VS1] Install Art on hit or guard.</td>
+                </tr>
+                <tr>
+                    <td>M Cruel Disaster<BR>qcb+MK</td>
+                    <td>21</td>
+                    <td>3</td>
+                    <td>28</td>
+                    <td>KND</td>
+                    <td>-4</td>
+                    <td></td>
+                    <td></td>
+                    <td>CA,VS*</td>
+                    <td>90</td>
+                    <td>120</td>
+                    <td>15/40</td>
+                    <td>High</td>
+                    <td align="left">4F-18F projectile invincibility.<BR>VS*:Can be cancelled with [VS1] Install Art on hit or guard.</td>
+                </tr>
+                <tr>
+                    <td>H Cruel Disaster<BR>qcb+HK</td>
+                    <td>27</td>
+                    <td>3</td>
+                    <td>28</td>
+                    <td>KND</td>
+                    <td>2</td>
+                    <td></td>
+                    <td></td>
+                    <td>CA,VS*</td>
+                    <td>100</td>
+                    <td>150</td>
+                    <td>15/40</td>
+                    <td>High</td>
+                    <td align="left">4F-26F projectile invincibility.<BR>VS*:Can be cancelled with [VS1] Install Art on hit or guard.</td>
+                </tr>
+                <tr>
+                    <td>EX Cruel Disaster<BR>qcb+KK</td>
+                    <td>15</td>
+                    <td>3</td>
+                    <td>33</td>
+                    <td>KND</td>
+                    <td>-12</td>
+                    <td></td>
+                    <td></td>
+                    <td>VS*</td>
+                    <td>100</td>
+                    <td>150</td>
+                    <td>-300/0</td>
+                    <td>High</td>
+                    <td align="left">4F-12F projectile invincibility.<BR>On guard or miss, the move ends at the first attack.<BR>Can be cancelled with jump on hit.<BR>VS*:Can be cancelled with [VS1] Install Art or [VS2] Tanden Booster on hit or guard.</td>
+                </tr>
+                <tr>
+                    <td>L Annihilate Sword<BR>jump qcb+LK</td>
+                    <td>14</td>
+                    <td>6</td>
+                    <td>9</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>70</td>
+                    <td>150</td>
+                    <td>5/40</td>
+                    <td>High</td>
+                    <td align="left"></td>
+                </tr>
+                <tr>
+                    <td>M Annihilate Sword<BR>jump qcb+MK</td>
+                    <td>23</td>
+                    <td>6</td>
+                    <td>9</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>80</td>
+                    <td>150</td>
+                    <td>5/40</td>
+                    <td>High</td>
+                    <td align="left"></td>
+                </tr>
+                <tr>
+                    <td>H Annihilate Sword<BR>jump qcb+HK</td>
+                    <td>27</td>
+                    <td>6</td>
+                    <td>16</td>
+                    <td>KND</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>90</td>
+                    <td>150</td>
+                    <td>5/40</td>
+                    <td>High</td>
+                    <td align="left"></td>
+                </tr>
+                <tr>
+                    <td>EX Annihilate Sword<BR>jump qcb+KK</td>
+                    <td>10</td>
+                    <td>12</td>
+                    <td>13</td>
+                    <td>KND</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>130</td>
+                    <td>200</td>
+                    <td>-300/0</td>
+                    <td>High</td>
+                    <td align="left"></td>
+                </tr>
+                <tr>
+                    <td>[VT1] Titanomachy<BR>qcf+P > HP+HK</td>
+                    <td>14</td>
+                    <td>5</td>
+                    <td>31</td>
+                    <td>KND</td>
+                    <td>2</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>120</td>
+                    <td>100</td>
+                    <td>10/40</td>
+                    <td>High</td>
+                    <td align="left">Uses 1000F V-Gauge timer.<BR>Can be cancelled when Hecatoncheires Install Art hits or is guarded.</td>
+                </tr>
+                <tr>
+                    <td>[VT1] Mad Spin<BR>dp+P > HP+HK</td>
+                    <td>7</td>
+                    <td>Land+2</td>
+                    <td>21</td>
+                    <td>2</td>
+                    <td>-2</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>n*10</td>
+                    <td>n*10+20</td>
+                    <td>10/n*5+0</td>
+                    <td>High</td>
+                    <td align="left">Uses 1000F V-Gauge timer.<BR>Can be cancelled when Mad Cradle or certain Install Arts hit, or when guarded.</td>
+                </tr>
+                <tr>
+                    <td>[VT1] Mad Spin (Alex IA)<BR>HP+HK</td>
+                    <td>11</td>
+                    <td>2</td>
+                    <td>75</td>
+                    <td>KND</td>
+                    <td>-56</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>80</td>
+                    <td>100</td>
+                    <td>10/30</td>
+                    <td>High</td>
+                    <td align="left">Uses 1000F V-Gauge timer.</td>
+                </tr>
+                <tr>
+                    <td>[VT1] Cyclone Disaster<BR>qcb+K > HP+HK</td>
+                    <td>11</td>
+                    <td>11</td>
+                    <td>21</td>
+                    <td>KND</td>
+                    <td>-4</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>70</td>
+                    <td>100</td>
+                    <td>10/60</td>
+                    <td>High</td>
+                    <td align="left">Uses 1000F V-Gauge timer.<BR>Can be cancelled when Cruel Disaster Install Art hits or is guarded.<BR>EX Cruel Disaster can only be cancelled on hit.</td>
+                </tr>
+                <tr>
+                    <td>[VT1] Hell's Gate<BR>jump qcb+K > HP+HK</td>
+                    <td>5</td>
+                    <td>8</td>
+                    <td>17</td>
+                    <td>KND</td>
+                    <td>-4</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>90</td>
+                    <td>120</td>
+                    <td>10/20</td>
+                    <td>High</td>
+                    <td align="left">Uses 1000F V-Gauge timer.<BR>Can be cancelled when Annihilate Sword Install Art hits or is guarded.</td>
+                </tr>
+            </tbody>
+
+            <!-- Critical Art -->
+            <tbody style="text-align:center;" id="criticalArt">
+                <tr style="background-color:#DDDDDD" class="noBorder">
+                    <td><b>Critical Art</b></td>
+                    <td colspan="2"><a href="#normalAttacks">Normals</a></td>
+                    <td colspan="2"><a href="#uniqueAttacks">Unique</a></td>
+                    <td colspan="2"><a href="#normalThrows">Throws</a></td>
+                    <td colspan="2"><a href="#vSystem">V-System</a></td>
+                    <td colspan="2"><a href="#specialMoves">Specials</a></td>
+                    <td colspan="3" style="text-align:left"><a href="{% url 'compendiums-seth-combos' %}">Combos</a></td>
+                </tr>
+                <tr>
+                    <td>Tanden Destruction<BR>qcf,qcf+P</td>
+                    <td>6</td>
+                    <td>10</td>
+                    <td>42</td>
+                    <td>KND</td>
+                    <td>-30</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>330</td>
+                    <td>0</td>
+                    <td>-900/0</td>
+                    <td>High</td>
+                    <td align="left">1F-15F full invincibility.</td>
+                </tr>
+                <tr>
+                    <td>[VT1] Tanden Extreme<BR>qcf,qcf+P</td>
+                    <td>6</td>
+                    <td>10</td>
+                    <td>42</td>
+                    <td>KND</td>
+                    <td>-30</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>350</td>
+                    <td>0</td>
+                    <td>-900/0</td>
+                    <td>High</td>
+                    <td align="left">1F-15F full invincibility.</td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="#top">Return to top</a>
+    </div>
+{% endblock content %}

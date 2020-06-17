@@ -35,3 +35,10 @@ def nina(request):
 #This is the Zafina pageself.
 def zafina(request):
     return render(request, 'compendiums/zafina.html', {'title': 'Zafina'})
+
+#This is the Seth pageself. =======================SFV=========================
+def seth(request):
+    return render(request, 'compendiums/Seth/seth.html', {'title': 'Seth'})
+
+def sethCombos(request):
+    return render(request, 'compendiums/Seth/sethCombos.html', {'title': 'Seth Combos'})

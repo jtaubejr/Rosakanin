@@ -1,0 +1,220 @@
+{% extends "compendiums/base.html" %}
+{% block content %}
+    <div style="text-align:center">
+        <h1>Seth</h1>
+        <a href="{% url 'compendiums-seth' %}">Frame Data</a>
+    </div>
+
+    <div style="padding:40px;">
+        <style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: separate;
+              border-spacing: 0px;
+              width: 100%;
+            }
+
+            td {
+              border: 1px solid black;
+              padding: 8px;
+            }
+
+            tr:nth-child(odd) {
+                background-color: #F6F6F6
+            }
+
+            th {
+                border: 1px solid white;
+                color: white;
+                background-color: #000000;
+                position: sticky;
+                top: 0;
+            }
+
+            th div {
+                height: 28px;
+                overflow: hidden;
+            }
+
+            tr.noBorder td {
+                border: 0;
+            }
+        </style>
+
+        <table id="comboTable">
+            <thead>
+                <tr style="text-align:center;">
+                    <th>Combo</th>
+                    <th>Damage</th>
+                    <th>Stun</th>
+                    <th>Bars</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+
+            <!-- Punish Combos -->
+            <tbody style="text-align:center;">
+                <tr style="background-color:#DDDDDD" class="noBorder">
+                    <td colspan="5" style="text-align:left"><b>Punish Combos</b></td>
+                </tr>
+                <tr>
+                    <td>(3F) c.LP xx dp+HP</td>
+                    <td>138</td>
+                    <td>205</td>
+                    <td>0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>(5F) s.MP > s.HP xx qcf+MP_qcb+MK</td>
+                    <td>171</td>
+                    <td>286</td>
+                    <td>0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>(5F) s.MP > s.HP xx dp+HP</td>
+                    <td>200</td>
+                    <td>310</td>
+                    <td>0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>(7F) s.HP xx qcf+HP, c.LP xx dp+HP</td>
+                    <td>278</td>
+                    <td>419</td>
+                    <td>0</td>
+                    <td></td>
+                </tr>
+            </tbody>
+
+            <!-- Confirms -->
+            <tbody style="text-align:center;">
+                <tr style="background-color:#DDDDDD" class="noBorder">
+                    <td colspan="5" style="text-align:left"><b>Confirms</b></td>
+                </tr>
+                <tr>
+                    <td>c.LK, c.LP xx qcf+LP</td>
+                    <td>111</td>
+                    <td>229</td>
+                    <td>0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>c.LK, c.LP xx dp+HP</td>
+                    <td>143</td>
+                    <td>253</td>
+                    <td>0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>s.LK, s.LK xx qcb+LK</td>
+                    <td>140</td>
+                    <td>213</td>
+                    <td>0</td>
+                    <td>Good oki.</td>
+                </tr>
+                <tr>
+                    <td>s.LK, s.LK xx qcf+LP</td>
+                    <td>140</td>
+                    <td>229</td>
+                    <td>0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>s.LK, s.LK xx dp+HP</td>
+                    <td>172</td>
+                    <td>253</td>
+                    <td>0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>c.MP, s.MP > s.HP xx qcf+MP_qcb+MK</td>
+                    <td>216</td>
+                    <td>354</td>
+                    <td>0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>c.MP, s.MP > s.HP xx dp+HP</td>
+                    <td>237</td>
+                    <td>375</td>
+                    <td>0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>c.MP, s.MP > s.HP xx VS1</td>
+                    <td>196</td>
+                    <td>270</td>
+                    <td>0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>c.MP, s.MP > s.HP xx VS2 xx dp+P</td>
+                    <td>237</td>
+                    <td>375</td>
+                    <td>0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>j.HP, s.HP xx qcf+HP, c.LP xx dp+HP</td>
+                    <td>335</td>
+                    <td>520</td>
+                    <td>0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>j.LK, c.LK, c.LP xx dp+HP</td>
+                    <td>166</td>
+                    <td>294</td>
+                    <td>0</td>
+                    <td></td>
+                </tr>
+            </tbody>
+
+            <!-- Counter Hit Combso -->
+            <tbody style="text-align:center;">
+                <tr style="background-color:#DDDDDD" class="noBorder">
+                    <td colspan="5" style="text-align:left"><b>Counter Hit</b></td>
+                </tr>
+                <tr>
+                    <td>CC f+HP, s.MP > s.HP xx qcf+MP_qcb+MK</td>
+                    <td>244</td>
+                    <td>402</td>
+                    <td>0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>CC f+HP, s.MP > s.HP xx dp+HP</td>
+                    <td>262</td>
+                    <td>420</td>
+                    <td>0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>CC f+HP, dash s.HK xx qcb+HK</td>
+                    <td>242</td>
+                    <td>405</td>
+                    <td>0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>CC df+HK_f+HP, s.HP xx qcf+HP, c.LP xx dp+HP</td>
+                    <td>320</td>
+                    <td>501</td>
+                    <td>0</td>
+                    <td></td>
+                </tr>
+                <!--
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                -->
+            </tbody>
+        </table>
+        <a href="#top">Return to top</a>
+    </div>
+{% endblock content %}
