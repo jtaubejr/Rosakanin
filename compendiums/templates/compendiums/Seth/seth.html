@@ -2,51 +2,107 @@
 {% block content %}
     <div style="text-align:center">
         <h1>Seth</h1>
-        <a href="{% url 'compendiums-seth-combos' %}">Combos</a>
     </div>
 
-    <div style="padding:40px;">
-        <style>
-            table {
-              font-family: arial, sans-serif;
-              border-collapse: separate;
-              border-spacing: 0px;
-              width: 100%;
-            }
+    <style>
+        .charNavbar {
+            overflow: hidden;
+            background-color: #333;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
 
-            td {
-              border: 1px solid black;
-              padding: 8px;
-            }
+        .charNavbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 8px 32px;
+            font-size: 16px;
+        }
 
-            tr:nth-child(odd) {
-                background-color: #F6F6F6
-            }
+        .charNavbar a:hover {
+            background: #f1f1f1;
+            color: black;
+        }
 
-            th {
-                border: 1px solid white;
-                color: white;
-                background-color: #000000;
-                position: sticky;
-                top: 0;
-            }
+        .charNavbar a.active {
+            background-color: #4CAF55;
+            color: white;
+        }
 
-            .header {
-                background-color: #DDDDDD
-                position:sticky;
-                top: 32px;
-            }
+        .mainFrameTable {
+            margin-bottom: 20px;
+        }
 
-            th div {
-                height: 28px;
-                overflow: hidden;
-            }
+        .charNavbar .icon {
+            display: none;
+        }
 
-            tr.noBorder td {
-                border: 0;
+        @media screen and (max-width: 600px) {
+            .charNavbar a:not(:first-child) {display: none;}
+            .charNavbar a.icon {
+                float: right;
+                display: block;
             }
-        </style>
-        <h1>Frame Data</h1>
+        }
+
+        @media screen and (max-width: 600px) {
+            .charNavbar.responsive .icon {
+                position: absolute;
+                right: 0;
+                bottom:0;
+            }
+            .charNavbar.responsive a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: separate;
+            border-spacing: 0px;
+            width: 100%;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #F6F6F6
+        }
+
+        th {
+            border: 1px solid white;
+            color: white;
+            background-color: #000000;
+            position: sticky;
+            top: 0;
+        }
+
+        .header {
+            background-color: #DDDDDD
+            position:sticky;
+            top: 32px;
+        }
+
+        th div {
+            height: 28px;
+            overflow: hidden;
+        }
+
+        tr.noBorder td {
+            border: 0;
+        }
+    </style>
+
+    <!-- Main table. -->
+    <div class ="mainFrameTable" style="padding:20px;">
         <table id ="frameTable">
             <thead>
                 <tr style="text-align:center;">
@@ -80,8 +136,7 @@
                     <td colspan="2"><a href="#normalThrows">Throws</a></td>
                     <td colspan="2"><a href="#vSystem">V-System</a></td>
                     <td colspan="2"><a href="#specialMoves">Specials</a></td>
-                    <td colspan="2"><a href="#criticalArt">CA</a></td>
-                    <td colspan="3" style="text-align:left"><a href="{% url 'compendiums-seth-combos' %}">Combos</a></td>
+                    <td colspan="5" style="text-align:left"><a href="#criticalArt">CA</a></td>
                 </tr>
                 <tr>
                     <td>Standing LP</td>
@@ -381,8 +436,7 @@
                     <td colspan="2"><a href="#normalThrows">Throws</a></td>
                     <td colspan="2"><a href="#vSystem">V-System</a></td>
                     <td colspan="2"><a href="#specialMoves">Specials</a></td>
-                    <td colspan="2"><a href="#criticalArt">CA</a></td>
-                    <td colspan="3" style="text-align:left"><a href="{% url 'compendiums-seth-combos' %}">Combos</a></td>
+                    <td colspan="5" style="text-align:left"><a href="#criticalArt">CA</a></td>
                 </tr>
                 <tr>
                     <td>Step Shoot<BR>Forward MP</td>
@@ -522,8 +576,7 @@
                     <td colspan="2"><a href="#uniqueAttacks">Unique</a></td>
                     <td colspan="2"><a href="#vSystem">V-System</a></td>
                     <td colspan="2"><a href="#specialMoves">Specials</a></td>
-                    <td colspan="2"><a href="#criticalArt">CA</a></td>
-                    <td colspan="3" style="text-align:left"><a href="{% url 'compendiums-seth-combos' %}">Combos</a></td>
+                    <td colspan="5" style="text-align:left"><a href="#criticalArt">CA</a></td>
                 </tr>
                 <tr>
                     <td>Death Throw<BR>Forward or Neutral LP+LK</td>
@@ -567,8 +620,7 @@
                     <td colspan="2"><a href="#uniqueAttacks">Unique</a></td>
                     <td colspan="2"><a href="#normalThrows">Throws</a></td>
                     <td colspan="2"><a href="#specialMoves">Specials</a></td>
-                    <td colspan="2"><a href="#criticalArt">CA</a></td>
-                    <td colspan="3" style="text-align:left"><a href="{% url 'compendiums-seth-combos' %}">Combos</a></td>
+                    <td colspan="5" style="text-align:left"><a href="#criticalArt">CA</a></td>
                 </tr>
                 <tr>
                     <td>[VS1] Tanden Engine<BR>MP+MK</td>
@@ -724,8 +776,7 @@
                     <td colspan="2"><a href="#uniqueAttacks">Unique</a></td>
                     <td colspan="2"><a href="#normalThrows">Throws</a></td>
                     <td colspan="2"><a href="#vSystem">V-System</a></td>
-                    <td colspan="2"><a href="#criticalArt">CA</a></td>
-                    <td colspan="3" style="text-align:left"><a href="{% url 'compendiums-seth-combos' %}">Combos</a></td>
+                    <td colspan="5" style="text-align:left"><a href="#criticalArt">CA</a></td>
                 </tr>
                 <tr>
                     <td>L Hecatoncheires<BR>qcf+LP</td>
@@ -1073,8 +1124,7 @@
                     <td colspan="2"><a href="#uniqueAttacks">Unique</a></td>
                     <td colspan="2"><a href="#normalThrows">Throws</a></td>
                     <td colspan="2"><a href="#vSystem">V-System</a></td>
-                    <td colspan="2"><a href="#specialMoves">Specials</a></td>
-                    <td colspan="3" style="text-align:left"><a href="{% url 'compendiums-seth-combos' %}">Combos</a></td>
+                    <td colspan="5" style="text-align:left"><a href="#specialMoves">Specials</a></td>
                 </tr>
                 <tr>
                     <td>Tanden Destruction<BR>qcf,qcf+P</td>
@@ -1110,6 +1160,24 @@
                 </tr>
             </tbody>
         </table>
-        <a href="#top">Return to top</a>
     </div>
+
+    <!-- Bottom navigation bar -->
+    <div class="charNavbar" id="myCharNavbar">
+        <a href="#home" class="active">Frame Data</a>
+        <a href="{% url 'compendiums-seth-combos' %}">Combos</a>
+        <a href="#top">Return to top</a>
+        <a href="javascript:void(0);" style="font-size:16px;" class="icon" onclick="myFunction()">&#9776;</a>
+    </div>
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myCharNavbar");
+            if (x.className === "charNavbar") {
+                x.className += " responsive";
+            } else {
+                x.className = "charNavbar";
+            }
+        }
+    </script>
 {% endblock content %}
