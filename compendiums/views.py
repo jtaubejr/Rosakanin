@@ -26,7 +26,19 @@ def leo(request):
 
 #This is the Negan pageself.
 def negan(request):
-    return render(request, 'compendiums/negan.html', {'title': 'Negan'})
+    return render(request, 'compendiums/Negan/negan.html', {'title': 'Negan'})
+
+def neganGrabs(request):
+    return render(request, 'compendiums/Negan/neganGrabs.html', {'title': 'Negan Grabs'})
+
+def neganPunishment(request):
+    return render(request, 'compendiums/Negan/neganPunishment.html', {'title': 'Negan Punishment'})
+
+def neganCombos(request):
+    return render(request, 'compendiums/Negan/neganCombos.html', {'title': 'Negan Combos'})
+
+def neganWall(request):
+    return render(request, 'compendiums/Negan/neganWall.html', {'title': 'Negan Wall/Floor Stuff'})
 
 #This is the Nina Williams pageself.
 def nina(request):

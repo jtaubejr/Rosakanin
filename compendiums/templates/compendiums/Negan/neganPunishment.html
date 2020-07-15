@@ -1,0 +1,299 @@
+{% extends "compendiums/base.html" %}
+{% block content %}
+    <div style="text-align:center">
+        <h1>Negan</h1>
+        <p><a href="https://docs.google.com/spreadsheets/d/1c2clGO51-1lGDAkuhYfR1tfzQcpJMOCMjn82F0Z-UzE/edit#gid=997669315" target="_blank">Original Spreadsheet</a></p>
+    </div>
+
+    <style>
+        .charNavbar {
+            overflow: hidden;
+            background-color: #333;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .charNavbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 8px 32px;
+            font-size: 16px;
+        }
+
+        .charNavbar a:hover {
+            background: #f1f1f1;
+            color: black;
+        }
+
+        .charNavbar a.active {
+            background-color: #4CAF55;
+            color: white;
+        }
+
+        .punishmentTable {
+            margin-bottom: 40px;
+        }
+
+        .charNavbar .icon {
+            display: none;
+        }
+
+        @media screen and (max-width: 600px) {
+            .charNavbar a:not(:first-child) {display: none;}
+            .charNavbar a.icon {
+                float: right;
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .charNavbar.responsive .icon {
+                position: absolute;
+                right: 0;
+                bottom:0;
+            }
+            .charNavbar.responsive a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: separate;
+            border-spacing: 0px;
+            width: 100%;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        th {
+            border: 1px solid white;
+            color: white;
+            background-color: #000000;
+            position: sticky;
+            top: 0;
+        }
+
+        th div {
+            height: 28px;
+            overflow: hidden;
+        }
+
+        tr.noBorder td {
+            border: 0;
+        }
+
+        tr:hover td{
+            background-color: #ffff99;
+            color: black;
+        }
+    </style>
+
+    <div class="punishmentTable">
+        <table id="punishmentTable">
+            <thead>
+                <tr style="text-align:center;">
+                    <th>Command</th>
+                    <th>Hit Level</th>
+                    <th>Damage</th>
+                    <th>Startup<BR>Frame</th>
+                    <th>Block<BR>Frame</th>
+                    <th>Hit<BR>Frame</th>
+                    <th>Counterhit<BR>Frame</th>
+                    <th>Notes/Properties</th>
+                </tr>
+            </thead>
+
+            <tbody style="text-align:center;">
+                <tr style="background-color:#4D4D4D;color:white" class="noBorder">
+                    <td>Standing Punishers</td>
+                    <td colspan="7"></td>
+                </tr>
+                <tr>
+                    <td style="background-color:#B3B3B3;">10 Frame</td><td colspan="7" style="background-color:white"></td>
+                </tr>
+                <tr>
+                    <td>1,2,4</td>
+                    <td>H,H,H</td>
+                    <td>7,9,13</td>
+                    <td>10</td>
+                    <td>-9</td>
+                    <td>+1</td>
+                    <td>KND</td>
+                    <td>NC, Guaranteed followup.</td>
+                </tr>
+                <tr>
+                    <td style="background-color:#B3B3B3;">11 Frame</td>
+                    <td colspan="7" style="background-color:white"></td>
+                </tr>
+                <tr>
+                    <td>2,2</td>
+                    <td>H,M</td>
+                    <td>9,17</td>
+                    <td>11</td>
+                    <td>-14</td>
+                    <td>+1s</td>
+                    <td>+1s</td>
+                    <td>NC.</td>
+                </tr>
+                <tr>
+                    <td style="background-color:#B3B3B3;">13 Frame</td>
+                    <td colspan="7" style="background-color:white"></td>
+                </tr>
+                <tr>
+                    <td>1+2</td>
+                    <td>H,M</td>
+                    <td>14,24</td>
+                    <td>13</td>
+                    <td>-14</td>
+                    <td>KND</td>
+                    <td>KND</td>
+                    <td>NC, Wall Break/Splat.</td>
+                </tr>
+                <tr style="background-color:#F6F6F6;">
+                    <td>d/f+1,2</td>
+                    <td>M,M</td><td>13,20</td>
+                    <td>13</td>
+                    <td>-11</td>
+                    <td>+7</td>
+                    <td>+7</td>
+                    <td>NC.</td>
+                </tr>
+                <tr>
+                    <td style="background-color:#B3B3B3;">14 Frame</td>
+                    <td colspan="7" style="background-color:white"></td>
+                </tr>
+                <tr>
+                    <td>qcf+1</td>
+                    <td>M</td>
+                    <td>25</td>
+                    <td>i14</td>
+                    <td>-19</td>
+                    <td>KND</td>
+                    <td>KND</td>
+                    <td></td>
+                </tr>
+                <tr style="background-color:#F6F6F6;">
+                    <td>d/f+4,2</td>
+                    <td>M,H</td>
+                    <td>15,20</td>
+                    <td>14</td>
+                    <td>+1</td>
+                    <td>+6</td>
+                    <td>+6</td>
+                    <td>NC.</td>
+                </tr>
+                <tr>
+                    <td>d/f+4,2*</td>
+                    <td>M,H</td>
+                    <td>15,20</td>
+                    <td>14</td>
+                    <td>+5</td>
+                    <td>+10</td>
+                    <td>+10</td>
+                    <td>NC, Enters INT.</td>
+                </tr>
+                <tr>
+                    <td style="background-color:#B3B3B3;">15 Frame</td>
+                    <td colspan="7" style="background-color:white"></td>
+                </tr>
+                <tr>
+                    <td>d/f+2</td>
+                    <td>M</td>
+                    <td>12</td>
+                    <td>15</td>
+                    <td>-14</td>
+                    <td>Launch</td>
+                    <td>Launch</td>
+                    <td>Wall Splat.</td>
+                </tr>
+                <tr style="background-color:#4D4D4D;color:white" class="noBorder">
+                    <td>WS Punishers</td>
+                    <td colspan="7"></td>
+                </tr>
+                <tr>
+                    <td style="background-color:#B3B3B3;">10 Frame</td><td colspan="7" style="background-color:white"></td>
+                </tr>
+                <tr>
+                    <td>d+1</td>
+                    <td>SM</td>
+                    <td>5</td>
+                    <td>10</td>
+                    <td>-5</td>
+                    <td>+6</td>
+                    <td>+6</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="background-color:#B3B3B3;">11 Frame</td><td colspan="7" style="background-color:white"></td>
+                </tr>
+                <tr>
+                    <td>WS+4</td>
+                    <td>M</td>
+                    <td>18</td>
+                    <td>11</td>
+                    <td>-6</td>
+                    <td>+5</td>
+                    <td>+5</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="background-color:#B3B3B3;">14 Frame</td><td colspan="7" style="background-color:white"></td>
+                </tr>
+                <tr>
+                    <td>WS+3,2</td>
+                    <td>M,M</td>
+                    <td>13,20</td>
+                    <td>14</td>
+                    <td>-19</td>
+                    <td>KND</td>
+                    <td>KND</td>
+                    <td>NC, Wall Break/Splat</td>
+                </tr>
+                <tr>
+                    <td style="background-color:#B3B3B3;">15 Frame</td><td colspan="7" style="background-color:white"></td>
+                </tr>
+                <tr>
+                    <td>WS+2</td>
+                    <td>M</td>
+                    <td>20</td>
+                    <td>15</td>
+                    <td>-16</td>
+                    <td>Launch</td>
+                    <td>Launch</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bottom navigation bar -->
+    <div class="charNavbar" id="myCharNavbar">
+        <a href="{% url 'compendiums-negan' %}">Movelist</a>
+        <a href="{% url 'compendiums-negan-grabs' %}">Grabs</a>
+        <a href="{% url 'compendiums-negan-punishment' %}" class="active">Punishment</a>
+        <a href="{% url 'compendiums-negan-combos' %}">Combos</a>
+        <a href="{% url 'compendiums-negan-wall' %}">Wall/Floor Stuff</a>
+        <a href="#top">Return to top</a>
+        <a href="javascript:void(0);" style="font-size:16px;" class="icon" onclick="myFunction()">&#9776;</a>
+    </div>
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myCharNavbar");
+            if (x.className === "charNavbar") {
+                x.className += " responsive";
+            } else {
+                x.className = "charNavbar";
+            }
+        }
+    </script>
+{% endblock content %}

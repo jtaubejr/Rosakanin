@@ -1,0 +1,169 @@
+{% extends "compendiums/base.html" %}
+{% block content %}
+    <div style="text-align:center">
+        <h1>Negan</h1>
+        <p><a href="https://docs.google.com/spreadsheets/d/1c2clGO51-1lGDAkuhYfR1tfzQcpJMOCMjn82F0Z-UzE/edit#gid=997669315" target="_blank">Original Spreadsheet</a></p>
+    </div>
+
+    <style>
+        .charNavbar {
+            overflow: hidden;
+            background-color: #333;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .charNavbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 8px 32px;
+            font-size: 16px;
+        }
+
+        .charNavbar a:hover {
+            background: #f1f1f1;
+            color: black;
+        }
+
+        .charNavbar a.active {
+            background-color: #4CAF55;
+            color: white;
+        }
+
+        .comboTable {
+            margin-bottom: 40px;
+        }
+
+        .charNavbar .icon {
+            display: none;
+        }
+
+        @media screen and (max-width: 600px) {
+            .charNavbar a:not(:first-child) {display: none;}
+            .charNavbar a.icon {
+                float: right;
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .charNavbar.responsive .icon {
+                position: absolute;
+                right: 0;
+                bottom:0;
+            }
+            .charNavbar.responsive a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: separate;
+            border-spacing: 0px;
+            width: 100%;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #F6F6F6
+        }
+
+        th {
+            border: 1px solid white;
+            color: white;
+            background-color: #000000;
+            position: sticky;
+            top: 0;
+        }
+
+        th div {
+            height: 28px;
+            overflow: hidden;
+        }
+
+        tr.noBorder td {
+            border: 0;
+        }
+
+        .hoverBody tr:hover td{
+            background-color: #ffff99;
+            color: black;
+        }
+    </style>
+
+    <div class="comboTable">
+        <table id="comboTable">
+            <tbody class="hoverBody" id="combo" style="text-align:center;">
+                <tr style="background:#444444;color:white;">
+                    <td>W!</td>
+                    <td>Damage</td>
+                    <td>Notes</td>
+                </tr>
+                <tr>
+                    <td>d/f+3,1 > qcf+1</td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td>b+2+3 > d+3+4</td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td>b+2+3~B > dash > d/f+4,2* > 1,2 > S! > f+3,2</td><td></td><td>Takes them off the wall and side switches.</td>
+                </tr>
+                <tr>
+                    <td>b+2+3~F > 4 > d/f+3,1 > qcf+1</td><td></td><td></td>
+                </tr>
+                <tr style="background:#444444;color:white;">
+                    <td>Wall Bounce (f,F+4)</td>
+                    <td></td>
+                    <td>Notes</td>
+                </tr>
+                <tr>
+                    <td>3 > d/f+3,1 > qcf+1</td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td>d/f+4,2 > d/f+3,1 > qcf+1</td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td>SSL > d/f+4,2* > 1,2 > S! > d/f+3,1 > qcf+1</td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td>SSL > b+2,3 > qcf+1 > qcf+1</td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td>b+2+3~F > 3 > d/f+3,1 > qcf+1</td><td></td><td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bottom navigation bar -->
+    <div class="charNavbar" id="myCharNavbar">
+        <a href="{% url 'compendiums-negan' %}">Movelist</a>
+        <a href="{% url 'compendiums-negan-grabs' %}">Grabs</a>
+        <a href="{% url 'compendiums-negan-punishment' %}">Punishment</a>
+        <a href="{% url 'compendiums-negan-combos' %}">Combos</a>
+        <a href="{% url 'compendiums-negan-wall' %}" class="active">Wall/Floor Stuff</a>
+        <a href="#top">Return to top</a>
+        <a href="javascript:void(0);" style="font-size:16px;" class="icon" onclick="myFunction()">&#9776;</a>
+    </div>
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myCharNavbar");
+            if (x.className === "charNavbar") {
+                x.className += " responsive";
+            } else {
+                x.className = "charNavbar";
+            }
+        }
+    </script>
+{% endblock content %}
