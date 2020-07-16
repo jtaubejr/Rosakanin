@@ -42,7 +42,22 @@ def neganWall(request):
 
 #This is the Nina Williams pageself.
 def nina(request):
-    return render(request, 'compendiums/nina.html', {'title': 'Nina'})
+    return render(request, 'compendiums/Nina/nina.html', {'title': 'Nina'})
+
+def ninaGrabs(request):
+    return render(request, 'compendiums/Nina/ninaGrabs.html', {'title': 'Nina Grabs'})
+
+def ninaPunishment(request):
+    return render(request, 'compendiums/Nina/ninaPunishment.html', {'title': 'Nina Punishment'})
+
+def ninaCombos(request):
+    return render(request, 'compendiums/Nina/ninaCombos.html', {'title': 'Nina Combos'})
+
+def ninaWall(request):
+    return render(request, 'compendiums/Nina/ninaWall.html', {'title': 'Nina Wall/Floor Stuff'})
+
+def ninaResource(request):
+    return render(request, 'compendiums/Nina/ninaResource.html', {'title': 'Nina Players/Resources'})
 
 #This is the Zafina pageself.
 def zafina(request):

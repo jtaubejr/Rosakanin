@@ -1,0 +1,180 @@
+{% extends "compendiums/base.html" %}
+{% block content %}
+    <div style="text-align:center">
+        <h1>Nina Williams</h1>
+        <p><a href="https://docs.google.com/spreadsheets/d/1N_XIfqnjUbaycJW90sxwAfIussRDIjLMLQsqsw2vFq4/edit#gid=1378454247" target="_blank">Original Spreadsheet</a></p>
+    </div>
+
+    <style>
+        .charNavbar {
+            overflow: hidden;
+            background-color: #333;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .charNavbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 8px 12px;
+            font-size: 16px;
+        }
+
+        .charNavbar a:hover {
+            background: #f1f1f1;
+            color: black;
+        }
+
+        .charNavbar a.active {
+            background-color: #4CAF55;
+            color: white;
+        }
+
+        .grabTable {
+            margin-bottom: 40px;
+        }
+
+        .charNavbar .icon {
+            display: none;
+        }
+
+        @media screen and (max-width: 700px) {
+            .charNavbar a:not(:first-child) {display: none;}
+            .charNavbar a.icon {
+                float: right;
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 700px) {
+            .charNavbar.responsive .icon {
+                position: absolute;
+                right: 0;
+                bottom:0;
+            }
+            .charNavbar.responsive a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: separate;
+            border-spacing: 0px;
+            width: 100%;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #F6F6F6
+        }
+
+        th {
+            border: 1px solid white;
+            color: white;
+            background-color: #000000;
+            position: sticky;
+            top: 0;
+        }
+
+        th div {
+            height: 28px;
+            overflow: hidden;
+        }
+
+        tr.noBorder td {
+            border: 0;
+        }
+
+        tr:hover {
+            background-color: #ffff99;
+        }
+    </style>
+
+    <div class="grabTable">
+        <table id="grabTable">
+            <thead>
+                <tr style="text-align:center;">
+                    <th>Move Name</th>
+                    <th>Command</th>
+                    <th>Hit Level</th>
+                    <th>Damage</th>
+                    <th>Startup<BR>Frame</th>
+                    <th>Break</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+
+            <tbody id="grab" style="text-align:center;""></tbody>
+
+            <tbody>
+                <tr style="background-color:black;text-align:center;">
+                    <td colspan="7">
+                        <a href="https://i.redd.it/mjjqszmeutez.png" target="_blank" rel="noopener noreferrer" style="color:white">Nina Grab Chart</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="grabTable"><img src="https://i.redd.it/mjjqszmeutez.png" alt="Nina's grab chart" width="100%"></div>
+
+    <!-- Bottom navigation bar -->
+    <div class="charNavbar" id="myCharNavbar">
+        <a href="{% url 'compendiums-nina' %}">Movelist</a>
+        <a href="{% url 'compendiums-nina-grabs' %}" class="active">Grabs</a>
+        <a href="{% url 'compendiums-nina-punishment' %}">Punishment</a>
+        <a href="{% url 'compendiums-nina-combos' %}">Combos</a>
+        <a href="{% url 'compendiums-nina-wall' %}">Wall/Floor</a>
+        <a href="{% url 'compendiums-nina-resource' %}">Players/Resources</a>
+        <a href="#top">Top</a>
+        <a href="javascript:void(0);" style="font-size:16px;" class="icon" onclick="myFunction()">&#9776;</a>
+    </div>
+
+    <!-- Pulls data from google spreadsheet json and inserts it into table body. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $.getJSON("https://spreadsheets.google.com/feeds/cells/1uPAwo9chyWpdukDIqqERYs34zKYC6M8IH8Gk6olDCwI/4/public/full?alt=json", function (data) {
+
+            var sheetData = data.feed.entry;
+
+            var i;
+            for (i = 7; i < sheetData.length; i+=7) {
+                var movename = sheetData[i]['gs$cell']['$t'];
+                var command = sheetData[i+1]['gs$cell']['$t'];
+                var hitLevel = sheetData[i+2]['gs$cell']['$t'];
+                var damage = sheetData[i+3]['gs$cell']['$t'];
+                var startframe = sheetData[i+4]['gs$cell']['$t'];
+                var broker = sheetData[i+5]['gs$cell']['$t'];
+                var notes = sheetData[i+6]['gs$cell']['$t'];
+
+                if (movename.includes("Chain Grabs:")) {
+                    document.getElementById('grab').innerHTML += ('<tr class="noBorder" style="background-color:#999999;color:white;">'+'<td>'+movename+'</td>'+'<td>'
+                        +command+'</td>'+'<td>'+hitLevel+'</td>'+'<td>'+damage+'</td>'+'<td>'+startframe+'</td>'+'<td>'+broker+'</td>'+'<td>'+notes+'</td>'+'</tr>');
+                } else {
+                    document.getElementById('grab').innerHTML += ('<tr>'+'<td>'+movename+'</td>'+'<td>'+command+'</td>'+'<td>'+hitLevel+'</td>'+'<td>'+damage+'</td>'
+                        +'<td>'+startframe+'</td>'+'<td>'+broker+'</td>'+'<td>'+notes+'</td>'+'</tr>');
+                }
+            }
+        });
+    </script>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myCharNavbar");
+            if (x.className === "charNavbar") {
+                x.className += " responsive";
+            } else {
+                x.className = "charNavbar";
+            }
+        }
+    </script>
+{% endblock content %}
