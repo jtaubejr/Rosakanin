@@ -41,7 +41,7 @@
             display: none;
         }
 
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 850px) {
             .charNavbar a:not(:first-child) {display: none;}
             .charNavbar a.icon {
                 float: right;
@@ -49,7 +49,7 @@
             }
         }
 
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 850px) {
             .charNavbar.responsive .icon {
                 position: absolute;
                 right: 0;
@@ -138,14 +138,14 @@
 
             var i;
             for (i = 8; i < sheetData.length; i+=8) {
-                var command = data.feed.entry[i]['gs$cell']['$t'];
-                var hitLevel = data.feed.entry[i+1]['gs$cell']['$t'];
-                var damage = data.feed.entry[i+2]['gs$cell']['$t'];
-                var startframe = data.feed.entry[i+3]['gs$cell']['$t'];
-                var blockframe = data.feed.entry[i+4]['gs$cell']['$t'];
-                var hitframe = data.feed.entry[i+5]['gs$cell']['$t'];
-                var chframe = data.feed.entry[i+6]['gs$cell']['$t'];
-                var notes = data.feed.entry[i+7]['gs$cell']['$t'];
+                var command = sheetData[i]['gs$cell']['$t'];
+                var hitLevel = sheetData[i+1]['gs$cell']['$t'];
+                var damage = sheetData[i+2]['gs$cell']['$t'];
+                var startframe = sheetData[i+3]['gs$cell']['$t'];
+                var blockframe = sheetData[i+4]['gs$cell']['$t'];
+                var hitframe = sheetData[i+5]['gs$cell']['$t'];
+                var chframe = sheetData[i+6]['gs$cell']['$t'];
+                var notes = sheetData[i+7]['gs$cell']['$t'];
 
                 document.getElementById('movelist').innerHTML += ('<tr>'+'<td>'+command+'</td>'+'<td>'+hitLevel+'</td>'+'<td>'+damage+'</td>'+'<td>'+startframe+'</td>'
                     +'<td>'+blockframe+'</td>'+'<td>'+hitframe+'</td>'+'<td>'+chframe+'</td>'+'<td>'+notes+'</td>'+'</tr>');

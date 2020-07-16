@@ -41,7 +41,7 @@
             display: none;
         }
 
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 850px) {
             .charNavbar a:not(:first-child) {display: none;}
             .charNavbar a.icon {
                 float: right;
@@ -49,7 +49,7 @@
             }
         }
 
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 850px) {
             .charNavbar.responsive .icon {
                 position: absolute;
                 right: 0;
@@ -136,9 +136,9 @@
 
             var i;
             for (i = 3; i < sheetData.length; i+=3) {
-                var combo = data.feed.entry[i]['gs$cell']['$t'];
-                var damage = data.feed.entry[i+1]['gs$cell']['$t'];
-                var notes = data.feed.entry[i+2]['gs$cell']['$t'];
+                var combo = sheetData[i]['gs$cell']['$t'];
+                var damage = sheetData[i+1]['gs$cell']['$t'];
+                var notes = sheetData[i+2]['gs$cell']['$t'];
 
                 if (combo.includes("CH ")){
                     document.getElementById('combo').innerHTML += ('<tr style="background:#E57368;">'+'<td>'+combo+'</td>'+'<td>'+damage+'</td>'+'<td>'+notes+'</td>'+'</tr>');
