@@ -42,7 +42,7 @@ def neganWall(request):
 
 #This is the Nina Williams pageself.
 def nina(request):
-    return render(request, 'compendiums/Nina/nina.html', {'title': 'Nina'})
+    return render(request, 'compendiums/Nina/nina.html', {'title': 'Nina Williams'})
 
 def ninaGrabs(request):
     return render(request, 'compendiums/Nina/ninaGrabs.html', {'title': 'Nina Grabs'})
