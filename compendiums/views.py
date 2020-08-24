@@ -18,7 +18,25 @@ def eliza(request):
 
 #This is the Julia Chang pageself.
 def julia(request):
-    return render(request, 'compendiums/julia.html', {'title': 'Julia Chang'})
+    return render(request, 'compendiums/Julia/julia.html', {'title': 'Julia Chang'})
+
+def juliaGrabs(request):
+    return render(request, 'compendiums/Julia/juliaGrabs.html', {'title': 'Julia Chang Grabs'})
+
+def juliaPunishment(request):
+    return render(request, 'compendiums/Julia/juliaPunishment.html', {'title': 'Julia Chang Punishment'})
+
+def juliaCombos(request):
+    return render(request, 'compendiums/Julia/juliaCombos.html', {'title': 'Julia Chang Combos'})
+    
+def juliaOki(request):
+    return render(request, 'compendiums/Julia/juliaOki.html', {'title': 'Julia Chang Oki'})
+
+def juliaWall(request):
+    return render(request, 'compendiums/Julia/juliaWall.html', {'title': 'Julia Chang Wall/Floor'})
+
+def juliaResource(request):
+    return render(request, 'compendiums/Julia/juliaResource.html', {'title': 'Julia Players/Resources'})
 
 #This is the Leo Kliesen pageself.
 def leo(request):
@@ -38,7 +56,7 @@ def neganCombos(request):
     return render(request, 'compendiums/Negan/neganCombos.html', {'title': 'Negan Combos'})
 
 def neganWall(request):
-    return render(request, 'compendiums/Negan/neganWall.html', {'title': 'Negan Wall/Floor Stuff'})
+    return render(request, 'compendiums/Negan/neganWall.html', {'title': 'Negan Wall/Floor'})
 
 #This is the Nina Williams pageself.
 def nina(request):
@@ -54,7 +72,7 @@ def ninaCombos(request):
     return render(request, 'compendiums/Nina/ninaCombos.html', {'title': 'Nina Combos'})
 
 def ninaWall(request):
-    return render(request, 'compendiums/Nina/ninaWall.html', {'title': 'Nina Wall/Floor Stuff'})
+    return render(request, 'compendiums/Nina/ninaWall.html', {'title': 'Nina Wall/Floor'})
 
 def ninaResource(request):
     return render(request, 'compendiums/Nina/ninaResource.html', {'title': 'Nina Players/Resources'})

@@ -1,0 +1,347 @@
+{% extends "compendiums/base.html" %}
+{% block content %}
+    <div style="text-align:center">
+        <h1>Julia Chang</h1>
+        <p><a href="https://docs.google.com/spreadsheets/d/1rGtcDbmz5a__Kg2pC3KROjoq7kQz6PeAA1xUHFczWMM/edit#gid=82136908" target="_blank">Original Spreadsheet</a></p>
+    </div>
+
+    <style>
+        .charNavbar {
+            overflow: hidden;
+            background-color: #333;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .charNavbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 8px 12px;
+            font-size: 16px;
+        }
+
+        .charNavbar a:hover {
+            background: #f1f1f1;
+            color: black;
+        }
+
+        .charNavbar a.active {
+            background-color: #4CAF55;
+            color: white;
+        }
+
+        .punishmentTable {
+            margin-bottom: 40px;
+        }
+
+        .charNavbar .icon {
+            display: none;
+        }
+
+        @media screen and (max-width: 780px) {
+            .charNavbar a:not(:first-child) {display: none;}
+            .charNavbar a.icon {
+                float: right;
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 780px) {
+            .charNavbar.responsive .icon {
+                position: absolute;
+                right: 0;
+                bottom:0;
+            }
+            .charNavbar.responsive a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: separate;
+            border-spacing: 0px;
+            width: 100%;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        th {
+            border: 1px solid white;
+            color: white;
+            background-color: #000000;
+            position: sticky;
+            top: 0;
+        }
+
+        th div {
+            height: 28px;
+            overflow: hidden;
+        }
+
+        tr.noBorder td {
+            border: 0;
+        }
+
+        tr:hover {
+            background-color: #FFFF99;
+        }
+    </style>
+
+    <div class="punishmentTable">
+        <table id="punishmentTable">
+            <thead>
+                <tr style="text-align:center;">
+                    <th>Command</th>
+                    <th>Hit Level</th>
+                    <th>Damage</th>
+                    <th>Startup<BR>Frame</th>
+                    <th>Block<BR>Frame</th>
+                    <th>Hit<BR>Frame</th>
+                    <th>Counterhit<BR>Frame</th>
+                    <th>Notes/Properties</th>
+                </tr>
+            </thead>
+
+            <tbody style="text-align:center;">
+                <tr style="background-color:#4D4D4D;color:white" class="noBorder">
+                    <td>Standing Punishers</td>
+                    <td colspan="7"></td>
+                </tr>
+                <tr>
+                    <td style="background-color:#B3B3B3;">10 Frame</td><td colspan="7" style="background-color:white"></td>
+                </tr>
+                <tr>
+                    <td>1,1</td>
+                    <td>H,M</td>
+                    <td>7,12</td>
+                    <td>10</td>
+                    <td>-9</td>
+                    <td>+2</td>
+                    <td>+2</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>1,2</td>
+                    <td>H,H</td>
+                    <td>7,8</td>
+                    <td>10</td>
+                    <td>-1</td>
+                    <td>+5</td>
+                    <td>+5</td>
+                    <td>Jails.</td>
+                </tr>
+                <tr>
+                    <td style="background-color:#B3B3B3;">12 Frame</td>
+                    <td colspan="7" style="background-color:white"></td>
+                </tr>
+                <tr>
+                    <td>2,B > SB 1+2</td>
+                    <td>H</td>
+                    <td>10,22</td>
+                    <td>12</td>
+                    <td>-8</td>
+                    <td>+4</td>
+                    <td>+4</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>f+2,4</td>
+                    <td>H,M</td>
+                    <td>10,17</td>
+                    <td>12</td>
+                    <td>-8</td>
+                    <td>+5</td>
+                    <td>KND</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>f,F+1,4</td>
+                    <td>M,H</td>
+                    <td>11,17</td>
+                    <td>11(~12)</td>
+                    <td>-4</td>
+                    <td>+15g</td>
+                    <td>Launch</td>
+                    <td>Tail Spin, Wall Break/Splat.</td>
+                </tr>
+                <tr>
+                    <td style="background-color:#B3B3B3;">13 Frame</td>
+                    <td colspan="7" style="background-color:white"></td>
+                </tr>
+                <tr>
+                    <td>d/f+3,1+2</td>
+                    <td>M,M</td>
+                    <td>14,18</td>
+                    <td>13</td>
+                    <td>-13</td>
+                    <td>KND</td>
+                    <td>KND</td>
+                    <td>Wall Break.</td>
+                </tr>
+                <tr>
+                    <td>f,F+3</td>
+                    <td>M</td>
+                    <td>21</td>
+                    <td>12(~13)</td>
+                    <td>-14</td>
+                    <td>KND</td>
+                    <td>KND</td>
+                    <td>Wall Break/Splat.</td>
+                </tr>
+                <tr>
+                    <td style="background-color:#B3B3B3;">15 Frame</td>
+                    <td colspan="7" style="background-color:white"></td>
+                </tr>
+                <tr>
+                    <td>d/f+2,1</td>
+                    <td>M,M</td>
+                    <td>8,12</td>
+                    <td>15</td>
+                    <td>-18</td>
+                    <td>Launch</td>
+                    <td>Launch</td>
+                    <td>Wall Splat.</td>
+                </tr>
+                <tr>
+                    <td style="background-color:#B3B3B3;">16 Frame</td>
+                    <td colspan="7" style="background-color:white"></td>
+                </tr>
+                <tr>
+                    <td>u/f+4,3</td>
+                    <td>M,M</td>
+                    <td>8,8</td>
+                    <td>16</td>
+                    <td>-13</td>
+                    <td>Launch</td>
+                    <td>Launch</td>
+                    <td>Wall Splat.</td>
+                </tr>
+                <tr style="background-color:#4D4D4D;color:white" class="noBorder">
+                    <td>WS Punishers</td>
+                    <td colspan="7"></td>
+                </tr>
+                <tr>
+                    <td style="background-color:#B3B3B3;">10 Frame</td><td colspan="7" style="background-color:white"></td>
+                </tr>
+                <tr>
+                    <td>d+1</td>
+                    <td>SM</td>
+                    <td>5</td>
+                    <td>10</td>
+                    <td>-5</td>
+                    <td>+6</td>
+                    <td>+6</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="background-color:#B3B3B3;">11 Frame</td><td colspan="7" style="background-color:white"></td>
+                </tr>
+                <tr>
+                    <td>WS+4</td>
+                    <td>M</td>
+                    <td>21</td>
+                    <td>11</td>
+                    <td>-15</td>
+                    <td>KND</td>
+                    <td>KND</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="background-color:#B3B3B3;">12 Frame</td><td colspan="7" style="background-color:white"></td>
+                </tr>
+                <tr>
+                    <td>FC d/f+2</td>
+                    <td>M</td>
+                    <td>25</td>
+                    <td>12</td>
+                    <td>-14</td>
+                    <td>KND</td>
+                    <td>KND</td>
+                    <td>Wall Break/Splat.</td>
+                </tr>
+                <tr>
+                    <td style="background-color:#B3B3B3;">14 Frame</td><td colspan="7" style="background-color:white"></td>
+                </tr>
+                <tr>
+                    <td>WS+3</td>
+                    <td>M</td>
+                    <td>21</td>
+                    <td>14</td>
+                    <td>-7</td>
+                    <td>+15g</td>
+                    <td>Launch</td>
+                    <td>Tail Spin, Homing, Wall Break/Splat.</td>
+                </tr>
+                <tr>
+                    <td>f,F+3</td>
+                    <td>M</td>
+                    <td>21</td>
+                    <td>12(~14)</td>
+                    <td>-14</td>
+                    <td>KND</td>
+                    <td>KND</td>
+                    <td>Wall Break/Splat.</td>
+                </tr>
+                <tr>
+                    <td style="background-color:#B3B3B3;">15 Frame</td><td colspan="7" style="background-color:white"></td>
+                </tr>
+                <tr>
+                    <td>WS+1</td>
+                    <td>M</td>
+                    <td>15</td>
+                    <td>15</td>
+                    <td>-13</td>
+                    <td>Launch</td>
+                    <td>Launch</td>
+                    <td>Wall Splat.</td>
+                </tr>
+                <tr>
+                    <td style="background-color:#B3B3B3;">16 Frame</td><td colspan="7" style="background-color:white"></td>
+                </tr>
+                <tr>
+                    <td>u/f+4,3</td>
+                    <td>M,M</td>
+                    <td>8,8</td>
+                    <td>16</td>
+                    <td>-13</td>
+                    <td>Launch</td>
+                    <td>Launch</td>
+                    <td>Wall Splat.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bottom navigation bar -->
+    <div class="charNavbar" id="myCharNavbar">
+        <a href="{% url 'compendiums-julia' %}">Movelist</a>
+        <a href="{% url 'compendiums-julia-grabs' %}">Grabs</a>
+        <a href="{% url 'compendiums-julia-punishment' %}" class="active">Punishment</a>
+        <a href="{% url 'compendiums-julia-combos' %}">Combos</a>
+        <a href="{% url 'compendiums-julia-wall' %}">Wall/Floor</a>
+        <a href="{% url 'compendiums-julia-oki' %}">Followups/Oki</a>
+        <a href="{% url 'compendiums-julia-resource' %}">Players/Resources</a>
+        <a href="#top">Top</a>
+        <a href="javascript:void(0);" style="font-size:16px;" class="icon" onclick="myFunction()">&#9776;</a>
+    </div>
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myCharNavbar");
+            if (x.className === "charNavbar") {
+                x.className += " responsive";
+            } else {
+                x.className = "charNavbar";
+            }
+        }
+    </script>
+{% endblock content %}

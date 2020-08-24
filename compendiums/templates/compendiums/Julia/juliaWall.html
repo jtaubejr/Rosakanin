@@ -1,0 +1,188 @@
+{% extends "compendiums/base.html" %}
+{% block content %}
+    <div style="text-align:center">
+        <h1>Julia Chang</h1>
+        <p><a href="https://docs.google.com/spreadsheets/d/1rGtcDbmz5a__Kg2pC3KROjoq7kQz6PeAA1xUHFczWMM/edit#gid=82136908" target="_blank">Original Spreadsheet</a></p>
+    </div>
+
+    <style>
+        .charNavbar {
+            overflow: hidden;
+            background-color: #333;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .charNavbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 8px 12px;
+            font-size: 16px;
+        }
+
+        .charNavbar a:hover {
+            background: #f1f1f1;
+            color: black;
+        }
+
+        .charNavbar a.active {
+            background-color: #4CAF55;
+            color: white;
+        }
+
+        .wallTable {
+            margin-bottom: 40px;
+        }
+
+        .charNavbar .icon {
+            display: none;
+        }
+
+        @media screen and (max-width: 780px) {
+            .charNavbar a:not(:first-child) {display: none;}
+            .charNavbar a.icon {
+                float: right;
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 780px) {
+            .charNavbar.responsive .icon {
+                position: absolute;
+                right: 0;
+                bottom:0;
+            }
+            .charNavbar.responsive a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: separate;
+            border-spacing: 0px;
+            width: 100%;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #F6F6F6
+        }
+
+        th {
+            border: 1px solid white;
+            color: white;
+            background-color: #000000;
+            position: sticky;
+            top: 0;
+        }
+
+        th div {
+            height: 28px;
+            overflow: hidden;
+        }
+
+        tr.noBorder td {
+            border: 0;
+        }
+
+        tr:hover {
+            background-color: #FFFF99 !important;
+            color: black !important;
+        }
+    </style>
+
+    <div class="wallTable">
+        <table id="wallTable">
+            <tbody id="wall" style="text-align:center;""></tbody>
+        </table>
+    </div>
+
+    <!-- Pulls data from google spreadsheet json and inserts it into table body. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $.getJSON("https://spreadsheets.google.com/feeds/cells/1uPAwo9chyWpdukDIqqERYs34zKYC6M8IH8Gk6olDCwI/16/public/full?alt=json", function (data) {
+
+            var sheetData = data.feed.entry;
+
+            var i;
+            for (i = 0; i < sheetData.length; i+=3) {
+                var combo = sheetData[i]['gs$cell']['$t'];
+                var damage = sheetData[i+1]['gs$cell']['$t'];
+                var notes = sheetData[i+2]['gs$cell']['$t'];
+
+                if (notes.includes("#")){
+                    document.getElementById('wall').innerHTML += ('<tr  class="noBorder" style="background:#999999;color:white;">'+'<td>'+combo+'</td>'+'<td>'+damage+'</td>'+'<td style="color:#999999;">'+notes+'</td>'+'</tr>');
+                }
+                else if (notes.includes("Bear") || combo.includes("Bear")){
+                    if (sheetData[i+2]['gs$cell']['inputValue'].includes("HYPERLINK")) {
+                        var url = /"(.*?)"/.exec(sheetData[i+2]['gs$cell']['inputValue'])[1];
+                        document.getElementById('wall').innerHTML += ('<tr style="background:#FFD966;">'+'<td>'+combo+'</td>'+'<td>'+damage+'</td>'+'<td>'
+                            +'<a href="'+url+'" target="_blank" rel="noopener noreferrer">'+notes+'</a>'+'</td>'+'</tr>');
+                    }
+                    else if (sheetData[i]['gs$cell']['inputValue'].includes("HYPERLINK")) {
+                        var url = /"(.*?)"/.exec(sheetData[i]['gs$cell']['inputValue'])[1];
+                        document.getElementById('wall').innerHTML += ('<tr style="background:#FFD966;">'+'<td>'+'<a href="'+url+'" target="_blank" rel="noopener noreferrer">'
+                            +combo+'</a>'+'</td>'+'<td>'+damage+'</td>'+'<td>'+notes+'</td>'+'</tr>');
+                    }
+                    else {
+                        document.getElementById('wall').innerHTML += ('<tr style="background:#FFD966;">'+'<td>'+combo+'</td>'+'<td>'+damage+'</td>'+'<td>'+notes+'</td>'+'</tr>');
+                    }
+                }
+                else if (damage.includes("Damage") || notes.includes("Notes")){
+                    if (sheetData[i+2]['gs$cell']['inputValue'].includes("HYPERLINK")) {
+                        var url = /"(.*?)"/.exec(sheetData[i+2]['gs$cell']['inputValue'])[1];
+                        document.getElementById('wall').innerHTML += ('<tr style="background:#444444;color:white;">'+'<td>'+combo+'</td>'+'<td>'+damage+'</td>'+'<td>'
+                            +'<a href="'+url+'" target="_blank" rel="noopener noreferrer" style="color:white">'+notes+'</a>'+'</td>'+'</tr>');
+                    }
+                    else {
+                        document.getElementById('wall').innerHTML += ('<tr style="background:#444444;color:white;">'+'<td>'+combo+'</td>'+'<td>'+damage+'</td>'+'<td>'+notes+'</td>'+'</tr>');
+                    }
+                }
+                else {
+                    if (sheetData[i+2]['gs$cell']['inputValue'].includes("HYPERLINK")) {
+                        var url = /"(.*?)"/.exec(sheetData[i+2]['gs$cell']['inputValue'])[1];
+                        document.getElementById('wall').innerHTML += ('<tr>'+'<td>'+combo+'</td>'+'<td>'+damage+'</td>'+'<td>'
+                            +'<a href="'+url+'" target="_blank" rel="noopener noreferrer">'+notes+'</a>'+'</td>'+'</tr>');
+                    }
+                    else {
+                        document.getElementById('wall').innerHTML += ('<tr>'+'<td>'+combo+'</td>'+'<td>'+damage+'</td>'+'<td>'+notes+'</td>'+'</tr>');
+                    }
+                }
+            }
+        });
+    </script>
+
+    <!-- Bottom navigation bar -->
+    <div class="charNavbar" id="myCharNavbar">
+        <a href="{% url 'compendiums-julia' %}">Movelist</a>
+        <a href="{% url 'compendiums-julia-grabs' %}">Grabs</a>
+        <a href="{% url 'compendiums-julia-punishment' %}">Punishment</a>
+        <a href="{% url 'compendiums-julia-combos' %}">Combos</a>
+        <a href="{% url 'compendiums-julia-wall' %}" class="active">Wall/Floor</a>
+        <a href="{% url 'compendiums-julia-oki' %}">Followups/Oki</a>
+        <a href="{% url 'compendiums-julia-resource' %}">Players/Resources</a>
+        <a href="#top">Top</a>
+        <a href="javascript:void(0);" style="font-size:16px;" class="icon" onclick="myFunction()">&#9776;</a>
+    </div>
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myCharNavbar");
+            if (x.className === "charNavbar") {
+                x.className += " responsive";
+            } else {
+                x.className = "charNavbar";
+            }
+        }
+    </script>
+{% endblock content %}

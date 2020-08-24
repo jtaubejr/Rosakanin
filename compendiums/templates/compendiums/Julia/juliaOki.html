@@ -1,0 +1,364 @@
+{% extends "compendiums/base.html" %}
+{% block content %}
+    <div style="text-align:center">
+        <h1>Julia Chang</h1>
+        <p><a href="https://docs.google.com/spreadsheets/d/1rGtcDbmz5a__Kg2pC3KROjoq7kQz6PeAA1xUHFczWMM/edit#gid=82136908" target="_blank">Original Spreadsheet</a></p>
+    </div>
+
+    <style>
+        .charNavbar {
+            overflow: hidden;
+            background-color: #333;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .charNavbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 8px 12px;
+            font-size: 16px;
+        }
+
+        .charNavbar a:hover {
+            background: #f1f1f1;
+            color: black;
+        }
+
+        .charNavbar a.active {
+            background-color: #4CAF55;
+            color: white;
+        }
+
+        .okiTable {
+            margin-bottom: 40px;
+        }
+
+        .charNavbar .icon {
+            display: none;
+        }
+
+        @media screen and (max-width: 780px) {
+            .charNavbar a:not(:first-child) {display: none;}
+            .charNavbar a.icon {
+                float: right;
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 780px) {
+            .charNavbar.responsive .icon {
+                position: absolute;
+                right: 0;
+                bottom:0;
+            }
+            .charNavbar.responsive a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: separate;
+            border-spacing: 0px;
+            width: 100%;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        th {
+            border: 1px solid white;
+            color: white;
+            background-color: #000000;
+            position: sticky;
+            top: 0;
+        }
+
+        th div {
+            height: 28px;
+            overflow: hidden;
+        }
+
+        tr.noBorder td {
+            border: 0;
+        }
+
+        tr:hover {
+            background-color: #FFFF99 !important;
+            color: black !important;
+        }
+
+        .collapsible {
+            background-color: #CFE2F3;
+            color: black;
+            width: 100%;
+            text-align: left;
+            font-size: 20px;
+        }
+
+        .content {
+            display: none;
+            overflow: hidden;
+        }
+
+        .redberry {
+            color: #980000;
+        }
+    </style>
+
+    <div class="followupTable">
+        <table id="followupTable">
+            <tbody style="text-align:center;">
+                <tr>
+                    <th>Command</th>
+                    <th>Hit Level</th>
+                    <th>Damage</th>
+                    <th>Startup<BR>Frame</th>
+                    <th>Block<BR>Frame</th>
+                    <th>Hit<BR>Frame</th>
+                    <th>Counterhit<BR>Frame</th>
+                    <th>Notes</th>
+                </tr>
+                <tr style="background-color:#444444;color:white;">
+                    <td colspan="8">
+                        Moves in the grey box are the initial moves. The colored boxes are the situation you are in and the following rows are potential moves you can go for.
+                    </td>
+                </tr>
+                <tr style="background-color:#F6F6F6;">
+                    <td style="background-color:#444444;color:white;">f,F+1</td>
+                    <td>M</td>
+                    <td>11</td>
+                    <td>11(~12)</td>
+                    <td style="background-color:#FFF2CC;">-2</td>
+                    <td>+4</td>
+                    <td>+7</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>u/f+1</td>
+                    <td>M</td>
+                    <td>17</td>
+                    <td>15</td>
+                    <td>-8</td>
+                    <td>+4</td>
+                    <td>Launch</td>
+                    <td>In case the opponent likes to mash 1 after blocking.</td>
+                </tr>
+                <tr>
+                    <td colspan="8">f,F+1 followed by u/f+1 does NOT work on: Bob, Claudio, Eliza, Feng, Geese, Kazumi, Lucky Chloe, Shaheen, or Steve.</td>
+                </tr>
+                <tr style="background-color:#444444;color:white;">
+                    <td colspan="8">
+                        <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/zarzob/status/1174321983401549835?s=20" style="color:white;">
+                            Zarzob's 2,B > SB 1+2 oki explored video.
+                        </a>
+                    </td>
+                </tr>
+                <tr style="background-color:#F6F6F6;">
+                    <td style="background-color:#444444;color:white;">2,B > SB 1+2</td>
+                    <td>H</td>
+                    <td>10,22</td>
+                    <td>12</td>
+                    <td>-8</td>
+                    <td style="background-color:#D9EAD3;">+4</td>
+                    <td>+4</td>
+                    <td>
+                        <a target="_blank" rel="noopener noreferrer" href="https://pbs.twimg.com/media/EEwIFicU8AAhF2v?format=jpg&name=4096x4096">Zarzob's 2,B > SB 1+2 followup chart.</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>d,D/F+1</td>
+                    <td>M</td>
+                    <td>14</td>
+                    <td>12(~12)</td>
+                    <td>-6</td>
+                    <td>+0</td>
+                    <td>+5</td>
+                    <td rowspan="3">View Zarzob's chart for notes on specific matchups.<BR>Chart is linked above and an embdedded version is below.</td>
+                </tr>
+                <tr>
+                    <td>f,F+1</td>
+                    <td>M</td>
+                    <td>11</td>
+                    <td>11(~12)</td>
+                    <td>-2</td>
+                    <td>+4</td>
+                    <td>+7</td>
+                </tr>
+                <tr>
+                    <td>4~2,1</td>
+                    <td>L,(H),M</td>
+                    <td>7,5,21</td>
+                    <td>15</td>
+                    <td>-16</td>
+                    <td>KND</td>
+                    <td>KND</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="button" class="collapsible" style="text-align:center;">Click here to display Zarzob's 2,B > SB 1+2 followup chart</button>
+    <div class="content"><img src="https://pbs.twimg.com/media/EEwIFicU8AAhF2v?format=jpg&name=4096x4096" alt="Julia's 2~b, 1+2 followups" width="100%"></div>
+
+    <div class="okiTable">
+        <table id="okiTable">
+            <tbody style="text-align:center;">
+                <tr style="background-color:#444444;color:white;">
+                    <td>Ender</td>
+                    <td>Followup</td>
+                    <td>Notes</td>
+                </tr>
+                <tr>
+                    <td>combo > S! > d/f+2,3~1</td>
+                    <td>f+3,4</td>
+                    <td>CH launches low getup/recovery kick and beats mid getup.
+                        <span class="redberry">Loses to spring attack.</span> -13 ob and +2 oh but if they tech roll then -12 ob and +3 oh.</td>
+                </tr>
+                <tr>
+                    <td>combo > S! > d/f+2,3~1</td>
+                    <td>deep f,F+1</td>
+                    <td>Floats recovery kick and spring attack. <span class="redberry">Whiffs on stay down and Side Quick Rolls.</span></td>
+                </tr>
+                <tr style="background-color:#F6F6F6;">
+                    <td>1+3 or u/f+1+2 grabs</td>
+                    <td>f,F+3</td>
+                    <td>They are put in S! if they try to wake up backwards or do a getup attack. <span class="redberry">Whiffs if they side roll left.</span></td>
+                </tr>
+                <tr>
+                    <td>FC d/f+4,3</td>
+                    <td>d+1+2</td>
+                    <td><span class="redberry">Loses to spring attack and stay down.</span></td>
+                </tr>
+                <tr>
+                    <td>FC d/f+4,3</td>
+                    <td>f,F+2</td>
+                    <td><span class="redberry">Will be blocked by stand up and wake up backwards.</span></td>
+                </tr>
+                <tr style="background-color:#F6F6F6;">
+                    <td colspan="3">
+                        <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/flower_bottom/status/1226432675109408768?s=20">WS+2,1 Julia Tech from @flower_bottom</a>
+                    </td>
+                </tr>
+                <tr style="background-color:#F6F6F6;">
+                    <td>WS+2,1</td>
+                    <td>run up d/f+2,1</td>
+                    <td>Launches if they wake up backwards, stand up (bt launch), or use getup kicks. (d/f+2),1 clips SRL for 9 dmg. <span class="redberry">SRR and Stay Down avoids it.</span></td>
+                </tr>
+                <tr style="background-color:#F6F6F6;">
+                    <td>WS+2,1</td>
+                    <td>dash b+1+2</td>
+                    <td>Launches if they wake up backwards or use getup kicks. Hits stand up and side rolling. <span class="redberry">Stay Down avoids it.</span></td>
+                </tr>
+                <tr>
+                    <td>W! > u/f+3+4 > f,F+3</td>
+                    <td>(d,D/F+1,4)</td>
+                    <td>Slightly plus (+2 for non-CES followup) vs. their techroll. Keeps wall position if they tech left.</td>
+                </tr>
+                <tr>
+                    <td>W! > u/f+3+4 > f,F+3</td>
+                    <td>(d,D/F+1)</td>
+                    <td>+5 vs. their techroll.</td>
+                </tr>
+                <tr><td colspan="3"></td></tr>
+                <tr style="background-color:#000000;color:white;">
+                    <td>Ender</td>
+                    <td>Wardrum Followup</td>
+                    <td>Notes</td>
+                </tr>
+                <tr>
+                    <td>combo > S! > 1+2 > f,F+3</td>
+                    <td>dash 4~2,1</td>
+                    <td>
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.twitch.tv/videos/476987353">Wardrums post combos part 1</a><BR>
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.twitch.tv/videos/477097271">Wardrums post combos part 2</a>
+                    </td>
+                </tr>
+                <tr style="background-color:#F6F6F6;">
+                    <td>combo > S! > d/f+2,3~1</td>
+                    <td>f > 4~2,1</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>d/f+2,3~1 > f,F+3</td>
+                    <td>dash 4~2,1</td>
+                    <td></td>
+                </tr>
+                <tr style="background-color:#F6F6F6;">
+                    <td>f,F+3 > WR+2,1</td>
+                    <td>b > 4~2,1</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>WS+4</td>
+                    <td>backdash 4~2,1</td>
+                    <td></td>
+                </tr>
+                <tr style="background-color:#F6F6F6;">
+                    <td>FC d/f+2</td>
+                    <td>dash 4~2,1</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>W! > u/f+3+4 > f,F+3</td>
+                    <td>backdash 4~2,1</td>
+                    <td></td>
+                </tr>
+                <tr style="background-color:#F6F6F6;">
+                    <td>W! > FC d/f+4,3 > f,F+3</td>
+                    <td>backdash 4~2,1</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
+
+    <!-- Bottom navigation bar -->
+    <div class="charNavbar" id="myCharNavbar">
+        <a href="{% url 'compendiums-julia' %}">Movelist</a>
+        <a href="{% url 'compendiums-julia-grabs' %}">Grabs</a>
+        <a href="{% url 'compendiums-julia-punishment' %}">Punishment</a>
+        <a href="{% url 'compendiums-julia-combos' %}">Combos</a>
+        <a href="{% url 'compendiums-julia-wall' %}">Wall/Floor</a>
+        <a href="{% url 'compendiums-julia-oki' %}" class="active">Followups/Oki</a>
+        <a href="{% url 'compendiums-julia-resource' %}">Players/Resources</a>
+        <a href="#top">Top</a>
+        <a href="javascript:void(0);" style="font-size:16px;" class="icon" onclick="myFunction()">&#9776;</a>
+    </div>
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myCharNavbar");
+            if (x.className === "charNavbar") {
+                x.className += " responsive";
+            } else {
+                x.className = "charNavbar";
+            }
+        }
+    </script>
+{% endblock content %}
