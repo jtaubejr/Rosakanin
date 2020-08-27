@@ -14,7 +14,22 @@ def armor_king(request):
 
 #This is the Eliza page.
 def eliza(request):
-    return render(request, 'compendiums/eliza.html', {'title': 'Eliza'})
+    return render(request, 'compendiums/Eliza/eliza.html', {'title': 'Eliza'})
+
+def elizaGrabs(request):
+    return render(request, 'compendiums/Eliza/elizaGrabs.html', {'title': 'Eliza Grabs'})
+
+def elizaPunishment(request):
+    return render(request, 'compendiums/Eliza/elizaPunishment.html', {'title': 'Eliza Punishment'})
+
+def elizaCombos(request):
+    return render(request, 'compendiums/Eliza/elizaCombos.html', {'title': 'Eliza Combos'})
+
+def elizaWall(request):
+    return render(request, 'compendiums/Eliza/elizaWall.html', {'title': 'Eliza Wall/Floor'})
+
+def elizaResource(request):
+    return render(request, 'compendiums/Eliza/elizaResource.html', {'title': 'Eliza Players/Resources'})
 
 #This is the Julia Chang pageself.
 def julia(request):
@@ -28,7 +43,7 @@ def juliaPunishment(request):
 
 def juliaCombos(request):
     return render(request, 'compendiums/Julia/juliaCombos.html', {'title': 'Julia Chang Combos'})
-    
+
 def juliaOki(request):
     return render(request, 'compendiums/Julia/juliaOki.html', {'title': 'Julia Chang Oki'})
 
