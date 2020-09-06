@@ -4,6 +4,11 @@ from . import views
 urlpatterns = [
     path('', views.home, name='compendiums-home'),
     path('Anna_Williams/', views.anna, name='compendiums-anna'),
+    path('Anna_Williams/Grabs', views.annaGrabs, name='compendiums-anna-grabs'),
+    path('Anna_Williams/Punishment', views.annaPunishment, name='compendiums-anna-punishment'),
+    path('Anna_Williams/Combos', views.annaCombos, name='compendiums-anna-combos'),
+    path('Anna_Williams/Wall', views.annaWall, name='compendiums-anna-wall'),
+    path('Anna_Williams/Resource', views.annaResource, name='compendiums-anna-resource'),
     path('Armor_King/', views.armor_king, name='compendiums-armor_king'),
     path('Eliza/', views.eliza, name='compendiums-eliza'),
     path('Eliza/Grabs', views.elizaGrabs, name='compendiums-eliza-grabs'),

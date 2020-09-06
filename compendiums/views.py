@@ -6,7 +6,22 @@ def home(request):
 
 #This is the Anna Williams page.
 def anna(request):
-    return render(request, 'compendiums/anna.html', {'title': 'Anna Williams'})
+    return render(request, 'compendiums/Anna/anna.html', {'title': 'Anna Williams'})
+
+def annaGrabs(request):
+    return render(request, 'compendiums/Anna/annaGrabs.html', {'title': 'Anna Williams Grabs'})
+
+def annaPunishment(request):
+    return render(request, 'compendiums/Anna/annaPunishment.html', {'title': 'Anna Williams Punishment'})
+
+def annaCombos(request):
+    return render(request, 'compendiums/Anna/annaCombos.html', {'title': 'Anna Williams Combos'})
+
+def annaWall(request):
+    return render(request, 'compendiums/Anna/annaWall.html', {'title': 'Anna Williams Wall/Floor'})
+
+def annaResource(request):
+    return render(request, 'compendiums/Anna/annaResource.html', {'title': 'Anna Williams Players/Resources'})
 
 #This is the Armor King page.
 def armor_king(request):
