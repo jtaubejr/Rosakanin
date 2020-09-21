@@ -151,7 +151,7 @@
                         document.getElementById('combos').innerHTML += ('<tr style="background:#E57368;">'+'<td>'+combo+'</td>'+'<td>'+damage+'</td>'+'<td>'+notes+'</td>'+'</tr>');
                     }
                 }
-                else if (notes.includes("Bear Combo")){
+                else if (notes.includes("Bear combo")){
                     if (sheetData[i+2]['gs$cell']['inputValue'].includes("HYPERLINK")) {
                         var url = /"(.*?)"/.exec(sheetData[i+2]['gs$cell']['inputValue'])[1];
                         document.getElementById('combos').innerHTML += ('<tr style="background:#FFD966;">'+'<td>'+combo+'</td>'+'<td>'+damage+'</td>'+'<td>'
