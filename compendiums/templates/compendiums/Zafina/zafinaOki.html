@@ -1,0 +1,384 @@
+{% extends "compendiums/base.html" %}
+{% block content %}
+    <div style="text-align:center">
+        <h1>Zafina</h1>
+        <p><a href="https://docs.google.com/spreadsheets/d/1wEZtFimcCabBBdLH-qyKbI_mS90YZnf32Y3nH_YwHAA/edit#gid=1378454247" target="_blank">Original Spreadsheet</a></p>
+    </div>
+
+    <style>
+        .charNavbar {
+            overflow: hidden;
+            background-color: #333;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .charNavbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 8px 12px;
+            font-size: 16px;
+        }
+
+        .charNavbar a:hover {
+            background: #f1f1f1;
+            color: black;
+        }
+
+        .charNavbar a.active {
+            background-color: #4CAF55;
+            color: white;
+        }
+
+        .okiTable {
+            margin-bottom: 80px;
+        }
+
+        .charNavbar .icon {
+            display: none;
+        }
+
+        @media screen and (max-width: 600px) {
+            .charNavbar a:not(:first-child) {display: none;}
+            .charNavbar a.icon {
+                float: right;
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .charNavbar.responsive .icon {
+                position: absolute;
+                right: 0;
+                bottom:0;
+            }
+            .charNavbar.responsive a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: separate;
+            border-spacing: 0px;
+            width: 100%;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        th {
+            border: 1px solid white;
+            color: white;
+            background-color: #000000;
+            position: sticky;
+            top: 0;
+        }
+
+        th div {
+            height: 28px;
+            overflow: hidden;
+        }
+
+        tr.noBorder td {
+            border: 0;
+        }
+
+        tr:hover {
+            background-color: #FFFF99 !important;
+            color: black !important;
+        }
+
+        .collapsible {
+            background-color: #CFE2F3;
+            color: black;
+            width: 100%;
+            text-align: left;
+            font-size: 20px;
+        }
+
+        .content {
+            display: none;
+            overflow: hidden;
+        }
+
+        .redberry {
+            color: #980000;
+        }
+    </style>
+
+    <div class="followupTable">
+        <table id="followupTable">
+            <tbody style="text-align:center;">
+                <tr>
+                    <th>Command</th>
+                    <th>Hit Level</th>
+                    <th>Damage</th>
+                    <th>Startup<BR>Frame</th>
+                    <th>Block<BR>Frame</th>
+                    <th>Hit<BR>Frame</th>
+                    <th>Counterhit<BR>Frame</th>
+                    <th>Notes</th>
+                </tr>
+                <tr class="noBorder" style="background-color:#444444;color:white;">
+                    <td colspan="8">
+                        Moves in the grey box are the initial moves. The colored boxes are the situation you are in and the following rows are potential moves you can go for.
+                    </td>
+                </tr>
+                <tr style="background-color:#F6F6F6;">
+                    <td style="background-color:#444444;color:white;">1,3</td>
+                    <td>H,H,(SCR)</td>
+                    <td>21</td>
+                    <td>10</td>
+                    <td>-2</td>
+                    <td style="background-color:#FFF2CC;">+7</td>
+                    <td>+7</td>
+                    <td>NC, Jails, Enters SCR.</td>
+                </tr>
+                <tr>
+                    <td>SCR 1+2</td>
+                    <td>M</td>
+                    <td>28</td>
+                    <td>17</td>
+                    <td>+6</td>
+                    <td>KND</td>
+                    <td>Launch</td>
+                    <td>Useful if they block or mash. But Zaf can SSL and BD out of it.</td>
+                </tr>
+                <tr>
+                    <td>SCR 2</td>
+                    <td>M,(SCR)</td>
+                    <td>17</td>
+                    <td>14</td>
+                    <td>-7</td>
+                    <td>+7</td>
+                    <td>Launch</td>
+                    <td>Good against mashers but weak to SSR.</td>
+                </tr>
+                <tr>
+                    <td>SCR 2,2</td>
+                    <td>M,M</td>
+                    <td>17,17</td>
+                    <td>14</td>
+                    <td>-10</td>
+                    <td>+8s</td>
+                    <td>KND</td>
+                    <td>NC and still good to use against mashers and lets you exit stance.</td>
+                </tr>
+                <tr>
+                    <td>SCR 1</td>
+                    <td>H,(SCR)</td>
+                    <td>12</td>
+                    <td>10</td>
+                    <td>-2</td>
+                    <td>+9</td>
+                    <td>+9</td>
+                    <td>Catches sidesteppers and will put you in +9 in SCR.</td>
+                </tr>
+                <tr>
+                    <td>SCR 3+4</td>
+                    <td>M,M</td>
+                    <td>10,20</td>
+                    <td>18</td>
+                    <td>-12</td>
+                    <td>+8</td>
+                    <td>+8</td>
+                    <td>Use this if they are using an evasive back swing blow to beat out the other options.</td>
+                </tr>
+                <tr>
+                    <td>SCR 4_4,B</td>
+                    <td>M,[(SCR)]</td>
+                    <td>25</td>
+                    <td>14</td>
+                    <td>-13_-18</td>
+                    <td>Launch</td>
+                    <td>Launch</td>
+                    <td>This also hits evasive back swing blows if you want to try and launch. Death on block.</td>
+                </tr>
+                <tr class="noBorder" style="background-color:#444444;color:#444444;">
+                    <td colspan="8">.</td>
+                </tr>
+                <tr style="background-color:#F6F6F6;">
+                    <td style="background-color:#444444;color:white;">SCR 1</td>
+                    <td>H,(SCR)</td>
+                    <td>12</td>
+                    <td>10</td>
+                    <td>-2</td>
+                    <td style="background-color:#D9EAD3;">+9</td>
+                    <td>+9</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>SCR 1+2</td>
+                    <td>M</td>
+                    <td>28</td>
+                    <td>17</td>
+                    <td>+6</td>
+                    <td>KND</td>
+                    <td>Launch</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>SCR 3,f+3</td>
+                    <td>M,H,(SCR)</td>
+                    <td>15,20</td>
+                    <td>13</td>
+                    <td>+3</td>
+                    <td>KND</td>
+                    <td>KND</td>
+                    <td>Beats evasive back swing blows.</td>
+                </tr>
+                <tr class="noBorder" style="background-color:#444444;color:#444444;">
+                    <td colspan="8">.</td>
+                </tr>
+                <tr style="background-color:#F6F6F6;">
+                    <td style="background-color:#444444;color:white;">d+3,D</td>
+                    <td>L,(MNT)</td>
+                    <td>14</td>
+                    <td>22</td>
+                    <td>-13</td>
+                    <td style="background-color:#D9EAD3;">+4s</td>
+                    <td>Launch</td>
+                    <td>Enters MNT.</td>
+                </tr>
+                <tr>
+                    <td>MNT 1</td>
+                    <td>M</td>
+                    <td>12</td>
+                    <td>13</td>
+                    <td>-6</td>
+                    <td>+5</td>
+                    <td>+5</td>
+                    <td>Weak to both SSL and SSR. Still her fastest way of exiting MNT.</td>
+                </tr>
+                <tr>
+                    <td>MNT 2</td>
+                    <td>M,(MNT)</td>
+                    <td>19</td>
+                    <td>13</td>
+                    <td>-14</td>
+                    <td>-3</td>
+                    <td>CS</td>
+                    <td>Use this against mashers. Weak to SSL.</td>
+                </tr>
+                <tr>
+                    <td>MNT d/f+2</td>
+                    <td>M</td>
+                    <td>13</td>
+                    <td>19</td>
+                    <td>-9</td>
+                    <td>Launch</td>
+                    <td>Launch</td>
+                    <td>Interruptible, weak to Zafina SSL/R. Weak to SWL/R.</td>
+                </tr>
+                <tr>
+                    <td>MNT d/f+3</td>
+                    <td>M,(TRT)</td>
+                    <td>18</td>
+                    <td>17</td>
+                    <td>-5</td>
+                    <td>+13</td>
+                    <td>+13</td>
+                    <td>Interruptible but homing. Enters TRT no matter what.</td>
+                </tr>
+                <tr>
+                    <td>B</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>Can block mids in stance and the safest to use against an ex dp.</td>
+                </tr>
+                <tr class="noBorder" style="background-color:#F6F6F6;">
+                    <td colspan="8">Chars that can't beat MNT 1 with SSR after d+3,D hits: Eddy, Master Raven, Miguel.</td>
+                </tr>
+                <tr class="noBorder" style="background-color:#F6F6F6;">
+                    <td colspan="8">Chars that can't beat MNT 1 with SSL/R after d+3,D hits: Akuma, Bears, Gigas, Jack-7.</td>
+                </tr>
+                <tr style="background-color:#000000;"><td colspan="8">.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="okiTable">
+        <table id="okiTable">
+            <tbody style="text-align:center;">
+                <tr style="background-color:#444444;color:white;">
+                    <td>Ender</td>
+                    <td>Followup</td>
+                    <td>Notes</td>
+                </tr>
+                <tr>
+                    <td>combo > S! > d/f+4,1</td>
+                    <td>f,F+3+4</td>
+                    <td> Extra 16 damage but <span class="redberry">can be escaped by Back Quick Roll</span>.</td>
+                </tr>
+                <tr style="background-color:#F6F6F6;">
+                    <td>CH d+3,D > MNT d+3,1 > MNT d+1,4 > S! > d+4,1~D WS+2</td>
+                    <td>-</td>
+                    <td>Launches people that hold back or wake up with attacks. <span class="redberry">SQRs evade it</span> but you can use WS+2,D to mess with punishes.</td>
+                </tr>
+                <tr>
+                    <td>d/f+3,4 or b+2 or f+4</td>
+                    <td>dash iWS+2</td>
+                    <td>16 extra damage. Launches Wakeup Backward adn getup attacks. Also launches Stand Up (Opp is backturned during it).</td>
+                </tr>
+                <tr>
+                    <td>CH d/b+2</td>
+                    <td>dash iWS+2</td>
+                    <td>Same as previous but stricter timing.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
+
+    <!-- Bottom navigation bar -->
+    <div class="charNavbar" id="myCharNavbar">
+        <a href="{% url 'compendiums-zafina' %}">Movelist</a>
+        <a href="{% url 'compendiums-zafina-grabs' %}">Grabs</a>
+        <a href="{% url 'compendiums-zafina-punishment' %}">Punishment</a>
+        <a href="{% url 'compendiums-zafina-combos' %}">Combos</a>
+        <a href="{% url 'compendiums-zafina-wall' %}">Wall/Floor</a>
+        <a href="{% url 'compendiums-zafina-oki' %}" class="active">Followups/Oki</a>
+        <a href="{% url 'compendiums-zafina-resource' %}">Players/Resources</a>
+        <a href="#top">Top</a>
+        <a href="javascript:void(0);" style="font-size:16px;" class="icon" onclick="myFunction()">&#9776;</a>
+    </div>
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myCharNavbar");
+            if (x.className === "charNavbar") {
+                x.className += " responsive";
+            } else {
+                x.className = "charNavbar";
+            }
+        }
+    </script>
+{% endblock content %}

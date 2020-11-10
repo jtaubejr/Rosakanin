@@ -109,7 +109,25 @@ def ninaResource(request):
 
 #This is the Zafina pageself.
 def zafina(request):
-    return render(request, 'compendiums/zafina.html', {'title': 'Zafina'})
+    return render(request, 'compendiums/Zafina/zafina.html', {'title': 'Zafina'})
+
+def zafinaGrabs(request):
+    return render(request, 'compendiums/Zafina/zafinaGrabs.html', {'title': 'Zafina Grabs'})
+
+def zafinaPunishment(request):
+    return render(request, 'compendiums/Zafina/zafinaPunishment.html', {'title': 'Zafina Punishment'})
+
+def zafinaCombos(request):
+    return render(request, 'compendiums/Zafina/zafinaCombos.html', {'title': 'Zafina Combos'})
+
+def zafinaOki(request):
+    return render(request, 'compendiums/Zafina/zafinaOki.html', {'title': 'Zafina Oki'})
+
+def zafinaWall(request):
+    return render(request, 'compendiums/Zafina/zafinaWall.html', {'title': 'Zafina Wall/Floor'})
+
+def zafinaResource(request):
+    return render(request, 'compendiums/Zafina/zafinaResource.html', {'title': 'Zafina Players/Resources'})
 
 #This is the Seth pageself. =======================SFV=========================
 def seth(request):

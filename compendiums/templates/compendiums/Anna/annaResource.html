@@ -34,14 +34,14 @@
         }
 
         .resourceTable {
-            margin-bottom: 40px;
+            margin-bottom: 80px;
         }
 
         .charNavbar .icon {
             display: none;
         }
 
-        @media screen and (max-width: 700px) {
+        @media screen and (max-width: 600px) {
             .charNavbar a:not(:first-child) {display: none;}
             .charNavbar a.icon {
                 float: right;
@@ -49,7 +49,7 @@
             }
         }
 
-        @media screen and (max-width: 700px) {
+        @media screen and (max-width: 600px) {
             .charNavbar.responsive .icon {
                 position: absolute;
                 right: 0;
@@ -140,12 +140,12 @@
     <!-- Pulls data from google spreadsheet json and inserts it into table body. -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        $.getJSON("https://spreadsheets.google.com/feeds/cells/1uPAwo9chyWpdukDIqqERYs34zKYC6M8IH8Gk6olDCwI/12/public/full?alt=json", function (data) {
+        $.getJSON("https://spreadsheets.google.com/feeds/cells/1-_Xvi5qqcyKQJsgWw2Z32lxAT5khUngNTi7CbJS-1X0/7/public/full?alt=json", function (data) {
 
             var sheetData = data.feed.entry;
 
             var i;
-            for (i = 4; i < sheetData.length; i+=4) {
+            for (i = 4; i < sheetData.length-14; i+=4) {
                 var streamer = sheetData[i]['gs$cell']['$t'];
                 var twitch = sheetData[i+1]['gs$cell']['$t'];
                 var twitter = sheetData[i+2]['gs$cell']['$t'];

@@ -1,8 +1,8 @@
 {% extends "compendiums/base.html" %}
 {% block content %}
     <div style="text-align:center">
-        <h1>Nina Williams</h1>
-        <p><a href="https://docs.google.com/spreadsheets/d/1N_XIfqnjUbaycJW90sxwAfIussRDIjLMLQsqsw2vFq4/edit#gid=1378454247" target="_blank">Original Spreadsheet</a></p>
+        <h1>Zafina</h1>
+        <p><a href="https://docs.google.com/spreadsheets/d/1wEZtFimcCabBBdLH-qyKbI_mS90YZnf32Y3nH_YwHAA/edit#gid=1378454247" target="_blank">Original Spreadsheet</a></p>
     </div>
 
     <style>
@@ -96,7 +96,7 @@
         }
 
         tr:hover {
-            background-color: #ffff99;
+            background-color: #FFFF99;
         }
     </style>
 
@@ -115,27 +115,18 @@
             </thead>
 
             <tbody id="grab" style="text-align:center;""></tbody>
-
-            <tbody>
-                <tr style="background-color:black;text-align:center;">
-                    <td colspan="7">
-                        <a href="https://i.redd.it/mjjqszmeutez.png" target="_blank" rel="noopener noreferrer" style="color:white">Nina Grab Chart</a>
-                    </td>
-                </tr>
-            </tbody>
         </table>
     </div>
 
-    <div class="grabTable"><img src="https://i.redd.it/mjjqszmeutez.png" alt="Nina's grab chart" width="100%"></div>
-
     <!-- Bottom navigation bar -->
     <div class="charNavbar" id="myCharNavbar">
-        <a href="{% url 'compendiums-nina' %}">Movelist</a>
-        <a href="{% url 'compendiums-nina-grabs' %}" class="active">Grabs</a>
-        <a href="{% url 'compendiums-nina-punishment' %}">Punishment</a>
-        <a href="{% url 'compendiums-nina-combos' %}">Combos</a>
-        <a href="{% url 'compendiums-nina-wall' %}">Wall/Floor</a>
-        <a href="{% url 'compendiums-nina-resource' %}">Players/Resources</a>
+        <a href="{% url 'compendiums-zafina' %}">Movelist</a>
+        <a href="{% url 'compendiums-zafina-grabs' %}" class="active">Grabs</a>
+        <a href="{% url 'compendiums-zafina-punishment' %}">Punishment</a>
+        <a href="{% url 'compendiums-zafina-combos' %}">Combos</a>
+        <a href="{% url 'compendiums-zafina-wall' %}">Wall/Floor</a>
+        <a href="{% url 'compendiums-zafina-oki' %}">Followups/Oki</a>
+        <a href="{% url 'compendiums-zafina-resource' %}">Players/Resources</a>
         <a href="#top">Top</a>
         <a href="javascript:void(0);" style="font-size:16px;" class="icon" onclick="myFunction()">&#9776;</a>
     </div>
@@ -143,7 +134,7 @@
     <!-- Pulls data from google spreadsheet json and inserts it into table body. -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        $.getJSON("https://spreadsheets.google.com/feeds/cells/1N_XIfqnjUbaycJW90sxwAfIussRDIjLMLQsqsw2vFq4/2/public/full?alt=json", function (data) {
+        $.getJSON("https://spreadsheets.google.com/feeds/cells/1wEZtFimcCabBBdLH-qyKbI_mS90YZnf32Y3nH_YwHAA/2/public/full?alt=json", function (data) {
 
             var sheetData = data.feed.entry;
 
@@ -157,12 +148,14 @@
                 var broker = sheetData[i+5]['gs$cell']['$t'];
                 var notes = sheetData[i+6]['gs$cell']['$t'];
 
-                if (movename.includes("Chain Grabs:")) {
-                    document.getElementById('grab').innerHTML += ('<tr class="noBorder" style="background-color:#999999;color:white;">'+'<td>'+movename+'</td>'+'<td>'
-                        +command+'</td>'+'<td>'+hitLevel+'</td>'+'<td>'+damage+'</td>'+'<td>'+startframe+'</td>'+'<td>'+broker+'</td>'+'<td>'+notes+'</td>'+'</tr>');
-                } else {
+                if (sheetData[i+6]['gs$cell']['inputValue'].includes("HYPERLINK")) {
+                    var url = /"(.*?)"/.exec(sheetData[i+6]['gs$cell']['inputValue'])[1];
+
                     document.getElementById('grab').innerHTML += ('<tr>'+'<td>'+movename+'</td>'+'<td>'+command+'</td>'+'<td>'+hitLevel+'</td>'+'<td>'+damage+'</td>'
-                        +'<td>'+startframe+'</td>'+'<td>'+broker+'</td>'+'<td>'+notes+'</td>'+'</tr>');
+                        +'<td>'+startframe+'</td>'+'<td>'+broker+'</td>'+'<td>'+'<a href="'+url+'" target="_blank">'+notes+'</a>'+'</td>'+'</tr>');
+                } else {
+                document.getElementById('grab').innerHTML += ('<tr>'+'<td>'+movename+'</td>'+'<td>'+command+'</td>'+'<td>'+hitLevel+'</td>'+'<td>'+damage+'</td>'
+                    +'<td>'+startframe+'</td>'+'<td>'+broker+'</td>'+'<td>'+notes+'</td>'+'</tr>');
                 }
             }
         });

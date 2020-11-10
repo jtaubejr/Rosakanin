@@ -1,8 +1,8 @@
 {% extends "compendiums/base.html" %}
 {% block content %}
     <div style="text-align:center">
-        <h1>Nina Williams</h1>
-        <p><a href="https://docs.google.com/spreadsheets/d/1N_XIfqnjUbaycJW90sxwAfIussRDIjLMLQsqsw2vFq4/edit#gid=1378454247" target="_blank">Original Spreadsheet</a></p>
+        <h1>Zafina</h1>
+        <p><a href="https://docs.google.com/spreadsheets/d/1wEZtFimcCabBBdLH-qyKbI_mS90YZnf32Y3nH_YwHAA/edit#gid=1378454247" target="_blank">Original Spreadsheet</a></p>
     </div>
 
     <style>
@@ -96,7 +96,7 @@
         }
 
         tr:hover {
-            background-color: #ffff99;
+            background-color: #FFFF99;
         }
     </style>
 
@@ -109,10 +109,15 @@
                     <td>For people that are used to numeric notation but not western Tekken notation.</td>
                 </tr>
                 <tr style="background-color:#6D6D6D;color:white">
-                    <td colspan="3"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=wmDDEEpcgEk" style="color:white;">Time 2 Die's Season 2 Combo Video</a></td>
+                    <td colspan="3">
+                        Thanks to EmpressWilliams, Bmac, JFK, Keanu Reeves, topflat, Sinimenovastus, Caiaffa, Chase, Zalazhar, Eric, Krzysztof, McCray, Insevolent, GoldLeopard, Merlin,
+                        ilight8, Etsiyo, and felirx for helping.
+                    </td>
                 </tr>
                 <tr style="background-color:#6D6D6D;color:white">
-                    <td colspan="3">WR+3,4 is consistent if air hits are 8 or less. Can do qcf+1 instead of WR+1+2 for wall splat.</td>
+                    <td colspan="3">
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=qF6bjXZnotE" style="color:white;">T7 - S3 Staple combos #3 Zafina by 쿨잼Coorejam</a>
+                    </td>
                 </tr>
             </tbody>
             <tbody class="hoverBody" id="combos" style="text-align:center;"></tbody>
@@ -121,12 +126,13 @@
 
     <!-- Bottom navigation bar -->
     <div class="charNavbar" id="myCharNavbar">
-        <a href="{% url 'compendiums-nina' %}">Movelist</a>
-        <a href="{% url 'compendiums-nina-grabs' %}">Grabs</a>
-        <a href="{% url 'compendiums-nina-punishment' %}">Punishment</a>
-        <a href="{% url 'compendiums-nina-combos' %}" class="active">Combos</a>
-        <a href="{% url 'compendiums-nina-wall' %}">Wall/Floor</a>
-        <a href="{% url 'compendiums-nina-resource' %}">Players/Resources</a>
+        <a href="{% url 'compendiums-zafina' %}">Movelist</a>
+        <a href="{% url 'compendiums-zafina-grabs' %}">Grabs</a>
+        <a href="{% url 'compendiums-zafina-punishment' %}">Punishment</a>
+        <a href="{% url 'compendiums-zafina-combos' %}" class="active">Combos</a>
+        <a href="{% url 'compendiums-zafina-wall' %}">Wall/Floor</a>
+        <a href="{% url 'compendiums-zafina-oki' %}">Followups/Oki</a>
+        <a href="{% url 'compendiums-zafina-resource' %}">Players/Resources</a>
         <a href="#top">Top</a>
         <a href="javascript:void(0);" style="font-size:16px;" class="icon" onclick="myFunction()">&#9776;</a>
     </div>
@@ -134,7 +140,7 @@
     <!-- Pulls data from google spreadsheet json and inserts it into table body. -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        $.getJSON("https://spreadsheets.google.com/feeds/cells/1N_XIfqnjUbaycJW90sxwAfIussRDIjLMLQsqsw2vFq4/4/public/full?alt=json", function (data) {
+        $.getJSON("https://spreadsheets.google.com/feeds/cells/1wEZtFimcCabBBdLH-qyKbI_mS90YZnf32Y3nH_YwHAA/4/public/full?alt=json", function (data) {
 
             var sheetData = data.feed.entry;
 
@@ -144,7 +150,7 @@
                 var damage = sheetData[i+1]['gs$cell']['$t'];
                 var notes = sheetData[i+2]['gs$cell']['$t'];
 
-                if (combo.includes("CH ")){
+                if (combo.includes("CH ") && damage.includes("Damage")){
                     if (sheetData[i+2]['gs$cell']['inputValue'].includes("HYPERLINK")) {
                         var url = /"(.*?)"/.exec(sheetData[i+2]['gs$cell']['inputValue'])[1];
                         document.getElementById('combos').innerHTML += ('<tr style="background:#E57368;">'+'<td>'+combo+'</td>'+'<td>'+damage+'</td>'+'<td>'
@@ -154,8 +160,21 @@
                         document.getElementById('combos').innerHTML += ('<tr style="background:#E57368;">'+'<td>'+combo+'</td>'+'<td>'+damage+'</td>'+'<td>'+notes+'</td>'+'</tr>');
                     }
                 }
-                else if (combo.includes("During Rage")) {
+                else if (combo.includes("Bear Combo")){
+                    if (sheetData[i+2]['gs$cell']['inputValue'].includes("HYPERLINK")) {
+                        var url = /"(.*?)"/.exec(sheetData[i+2]['gs$cell']['inputValue'])[1];
+                        document.getElementById('combos').innerHTML += ('<tr style="background:#FFD966;">'+'<td>'+combo+'</td>'+'<td>'+damage+'</td>'+'<td>'
+                            +'<a href="'+url+'" target="_blank" rel="noopener noreferrer">'+notes+'</a>'+'</td>'+'</tr>');
+                    }
+                    else {
+                        document.getElementById('combos').innerHTML += ('<tr style="background:#FFD966;">'+'<td>'+combo+'</td>'+'<td>'+damage+'</td>'+'<td>'+notes+'</td>'+'</tr>');
+                    }
+                }
+                else if (combo.includes("Rage Drive")) {
                     document.getElementById('combos').innerHTML += ('<tr style="background:#76A7FA;">'+'<td>'+combo+'</td>'+'<td>'+damage+'</td>'+'<td>'+notes+'</td>'+'</tr>');
+                }
+                else if (combo.includes("Guaranteed Hits")) {
+                    document.getElementById('combos').innerHTML += ('<tr style="background:#CCCCCC;">'+'<td>'+combo+'</td>'+'<td>'+damage+'</td>'+'<td>'+notes+'</td>'+'</tr>');
                 }
                 else if (damage.includes("Damage")){
                     if (sheetData[i+2]['gs$cell']['inputValue'].includes("HYPERLINK")) {

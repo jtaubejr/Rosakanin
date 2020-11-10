@@ -1,8 +1,8 @@
 {% extends "compendiums/base.html" %}
 {% block content %}
     <div style="text-align:center">
-        <h1>Anna Williams</h1>
-        <p><a href="https://docs.google.com/spreadsheets/d/1-_Xvi5qqcyKQJsgWw2Z32lxAT5khUngNTi7CbJS-1X0/edit#gid=289321333" target="_blank">Original Spreadsheet</a></p>
+        <h1>Zafina</h1>
+        <p><a href="https://docs.google.com/spreadsheets/d/1wEZtFimcCabBBdLH-qyKbI_mS90YZnf32Y3nH_YwHAA/edit#gid=1378454247" target="_blank">Original Spreadsheet</a></p>
     </div>
 
     <style>
@@ -110,7 +110,7 @@
     <!-- Pulls data from google spreadsheet json and inserts it into table body. -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        $.getJSON("https://spreadsheets.google.com/feeds/cells/1-_Xvi5qqcyKQJsgWw2Z32lxAT5khUngNTi7CbJS-1X0/5/public/full?alt=json", function (data) {
+        $.getJSON("https://spreadsheets.google.com/feeds/cells/1wEZtFimcCabBBdLH-qyKbI_mS90YZnf32Y3nH_YwHAA/5/public/full?alt=json", function (data) {
 
             var sheetData = data.feed.entry;
 
@@ -164,12 +164,13 @@
 
     <!-- Bottom navigation bar -->
     <div class="charNavbar" id="myCharNavbar">
-        <a href="{% url 'compendiums-anna' %}">Movelist</a>
-        <a href="{% url 'compendiums-anna-grabs' %}">Grabs</a>
-        <a href="{% url 'compendiums-anna-punishment' %}">Punishment</a>
-        <a href="{% url 'compendiums-anna-combos' %}">Combos</a>
-        <a href="{% url 'compendiums-anna-wall' %}" class="active">Wall/Floor</a>
-        <a href="{% url 'compendiums-anna-resource' %}">Players/Resources</a>
+        <a href="{% url 'compendiums-zafina' %}">Movelist</a>
+        <a href="{% url 'compendiums-zafina-grabs' %}">Grabs</a>
+        <a href="{% url 'compendiums-zafina-punishment' %}">Punishment</a>
+        <a href="{% url 'compendiums-zafina-combos' %}">Combos</a>
+        <a href="{% url 'compendiums-zafina-wall' %}" class="active">Wall/Floor</a>
+        <a href="{% url 'compendiums-zafina-oki' %}">Followups/Oki</a>
+        <a href="{% url 'compendiums-zafina-resource' %}">Players/Resources</a>
         <a href="#top">Top</a>
         <a href="javascript:void(0);" style="font-size:16px;" class="icon" onclick="myFunction()">&#9776;</a>
     </div>

@@ -36,6 +36,12 @@ urlpatterns = [
     path('Nina_Williams/Wall', views.ninaWall, name='compendiums-nina-wall'),
     path('Nina_Williams/Resource', views.ninaResource, name='compendiums-nina-resource'),
     path('Zafina/', views.zafina, name='compendiums-zafina'),
+    path('Zafina/Grabs', views.zafinaGrabs, name='compendiums-zafina-grabs'),
+    path('Zafina/Punishment', views.zafinaPunishment, name='compendiums-zafina-punishment'),
+    path('Zafina/Combos', views.zafinaCombos, name='compendiums-zafina-combos'),
+    path('Zafina/Wall', views.zafinaWall, name='compendiums-zafina-wall'),
+    path('Zafina/Oki', views.zafinaOki, name='compendiums-zafina-oki'),
+    path('Zafina/Resource', views.zafinaResource, name='compendiums-zafina-resource'),
     path('Seth/', views.seth, name='compendiums-seth'),
     path('Seth/Combos', views.sethCombos, name='compendiums-seth-combos')
 ]

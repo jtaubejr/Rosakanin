@@ -34,14 +34,14 @@
         }
 
         .wallTable {
-            margin-bottom: 40px;
+            margin-bottom: 80px;
         }
 
         .charNavbar .icon {
             display: none;
         }
 
-        @media screen and (max-width: 700px) {
+        @media screen and (max-width: 600px) {
             .charNavbar a:not(:first-child) {display: none;}
             .charNavbar a.icon {
                 float: right;
@@ -49,7 +49,7 @@
             }
         }
 
-        @media screen and (max-width: 700px) {
+        @media screen and (max-width: 600px) {
             .charNavbar.responsive .icon {
                 position: absolute;
                 right: 0;
@@ -110,7 +110,7 @@
     <!-- Pulls data from google spreadsheet json and inserts it into table body. -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        $.getJSON("https://spreadsheets.google.com/feeds/cells/1uPAwo9chyWpdukDIqqERYs34zKYC6M8IH8Gk6olDCwI/21/public/full?alt=json", function (data) {
+        $.getJSON("https://spreadsheets.google.com/feeds/cells/1Q5cEwGeMzKiykbiHEtHk94zdQH07Igk-TqwK0omlCgY/5/public/full?alt=json", function (data) {
 
             var sheetData = data.feed.entry;
 

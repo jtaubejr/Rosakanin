@@ -1,8 +1,8 @@
 {% extends "compendiums/base.html" %}
 {% block content %}
     <div style="text-align:center">
-        <h1>Eliza</h1>
-        <p><a href="https://docs.google.com/spreadsheets/d/1Q5cEwGeMzKiykbiHEtHk94zdQH07Igk-TqwK0omlCgY/edit#gid=0" target="_blank">Original Spreadsheet</a></p>
+        <h1>Zafina</h1>
+        <p><a href="https://docs.google.com/spreadsheets/d/1wEZtFimcCabBBdLH-qyKbI_mS90YZnf32Y3nH_YwHAA/edit#gid=1378454247" target="_blank">Original Spreadsheet</a></p>
     </div>
 
     <style>
@@ -110,20 +110,37 @@
             <tbody class="hoverBody" style="text-align:center;">
                 <tr><td colspan="4"></td></tr>
                 <tr style="background:#444444;color:white;">
-                    <td colspan="4"><a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/document/d/1_Pvtn_UB8NjQ2bPVLDlX__RUSYOFHLc9CG8B3HQ6yL4/edit" style="color:white;">
-                            The (Not) Advanced Eliza Guide</a></td>
+                    <td colspan="4"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=zEys1-kYzJc" style="color:white;">
+                        T7 - S3 GUIDE #1 ZAFINA by 쿨잼Coorejam</a></td>
                 </tr>
                 <tr style="background:#444444;color:white;">
-                    <td colspan="4"><a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/document/d/1RGmrxWAHubKTjLVNrxgmpfqHd4OEygLOK_w-J9p5Dko/edit" style="color:white;">
-                        Eliza Discord Combo Log</a></td>
+                    <td colspan="4"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=QTBSKmCDLgA" style="color:white;">
+                        [Tekken 7] Anti-Zafina Punishment Guide by Mupaper꼬꼬마</a></td>
                 </tr>
+                <tr><td colspan="4"></td></tr>
                 <tr style="background:#444444;color:white;">
-                    <td colspan="4"><a target="_blank" rel="noopener noreferrer" href="https://youtu.be/aUHMcQPN4Zs" style="color:white;">
-                        철권7 시즌3 콤보 가이드 #45 엘리자 S3 Combo Guide by Coorejam</a></td>
+                    <td>Player</td>
+                    <td>Video</td>
+                    <td>Document</td>
+                    <td>Notes</td>
                 </tr>
-                <tr style="background:#444444;color:white;">
-                    <td colspan="4"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=zVOOvQTHh7Q" style="color:white;">
-                        Tekken 7 | Eliza Season 3 Max Damage Combos by Shene</a></td>
+                <tr>
+                    <td>Fergus</td>
+                    <td><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=6QfDGrb0-eE">Tekken 7 - Zafina Tutorial</a></td>
+                    <td><a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/document/d/1oy-ze9QQrEJaYsuCsPuVKcMJc45HxBxg3JrS972suWg/edit">Written Guide and Combos for Zafina</a></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>JFK</td>
+                    <td><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=HD5R48UfERo">Tekken 7 Anti Zafina Tutorial</a></td>
+                    <td>-</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Daddy King</td>
+                    <td><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=y28Ub2T-nDU">[Tekken7] ""You Come Here"" Technique Lecture with Zafina</a></td>
+                    <td>-</td>
+                    <td>Enable closed captions.</td>
                 </tr>
             </tbody>
         </table>
@@ -132,12 +149,12 @@
     <!-- Pulls data from google spreadsheet json and inserts it into table body. -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        $.getJSON("https://spreadsheets.google.com/feeds/cells/1Q5cEwGeMzKiykbiHEtHk94zdQH07Igk-TqwK0omlCgY/7/public/full?alt=json", function (data) {
+        $.getJSON("https://spreadsheets.google.com/feeds/cells/1wEZtFimcCabBBdLH-qyKbI_mS90YZnf32Y3nH_YwHAA/7/public/full?alt=json", function (data) {
 
             var sheetData = data.feed.entry;
 
             var i;
-            for (i = 4; i < sheetData.length-4; i+=4) {
+            for (i = 4; i < sheetData.length-16; i+=4) {
                 var streamer = sheetData[i]['gs$cell']['$t'];
                 var twitch = sheetData[i+1]['gs$cell']['$t'];
                 var twitter = sheetData[i+2]['gs$cell']['$t'];
@@ -153,12 +170,13 @@
 
     <!-- Bottom navigation bar -->
     <div class="charNavbar" id="myCharNavbar">
-        <a href="{% url 'compendiums-eliza' %}">Movelist</a>
-        <a href="{% url 'compendiums-eliza-grabs' %}">Grabs</a>
-        <a href="{% url 'compendiums-eliza-punishment' %}">Punishment</a>
-        <a href="{% url 'compendiums-eliza-combos' %}">Combos</a>
-        <a href="{% url 'compendiums-eliza-wall' %}">Wall/Floor</a>
-        <a href="{% url 'compendiums-eliza-resource' %}" class="active">Players/Resources</a>
+        <a href="{% url 'compendiums-zafina' %}">Movelist</a>
+        <a href="{% url 'compendiums-zafina-grabs' %}">Grabs</a>
+        <a href="{% url 'compendiums-zafina-punishment' %}">Punishment</a>
+        <a href="{% url 'compendiums-zafina-combos' %}">Combos</a>
+        <a href="{% url 'compendiums-zafina-wall' %}">Wall/Floor</a>
+        <a href="{% url 'compendiums-zafina-oki' %}">Followups/Oki</a>
+        <a href="{% url 'compendiums-zafina-resource' %}" class="active">Players/Resources</a>
         <a href="#top">Top</a>
         <a href="javascript:void(0);" style="font-size:16px;" class="icon" onclick="myFunction()">&#9776;</a>
     </div>
