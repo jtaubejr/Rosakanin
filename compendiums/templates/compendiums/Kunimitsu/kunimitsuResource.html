@@ -125,7 +125,7 @@
             var sheetData = data.feed.entry;
 
             var i;
-            for (i = 4; i < sheetData.length-16; i+=4) {
+            for (i = 4; i < sheetData.length; i+=4) {
                 var streamer = sheetData[i]['gs$cell']['$t'];
                 var twitch = sheetData[i+1]['gs$cell']['$t'];
                 var twitter = sheetData[i+2]['gs$cell']['$t'];
