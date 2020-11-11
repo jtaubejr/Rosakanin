@@ -1,0 +1,172 @@
+{% extends "compendiums/base.html" %}
+{% block content %}
+    <div style="text-align:center">
+        <h1>Kunimitsu</h1>
+        <p><a href="https://docs.google.com/spreadsheets/d/1UuJdHsmVh8pBRv5ZEPaRQg-JKWsQePR_D3feJiXKh6k/edit#gid=1378454247" target="_blank">Original Spreadsheet</a></p>
+    </div>
+
+    <style>
+        .charNavbar {
+            overflow: hidden;
+            background-color: #333;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .charNavbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 8px 12px;
+            font-size: 16px;
+        }
+
+        .charNavbar a:hover {
+            background: #f1f1f1;
+            color: black;
+        }
+
+        .charNavbar a.active {
+            background-color: #4CAF55;
+            color: white;
+        }
+
+        .grabTable {
+            margin-bottom: 80px;
+        }
+
+        .charNavbar .icon {
+            display: none;
+        }
+
+        @media screen and (max-width: 600px) {
+            .charNavbar a:not(:first-child) {display: none;}
+            .charNavbar a.icon {
+                float: right;
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .charNavbar.responsive .icon {
+                position: absolute;
+                right: 0;
+                bottom:0;
+            }
+            .charNavbar.responsive a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: separate;
+            border-spacing: 0px;
+            width: 100%;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #F6F6F6
+        }
+
+        th {
+            border: 1px solid white;
+            color: white;
+            background-color: #000000;
+            position: sticky;
+            top: 0;
+        }
+
+        th div {
+            height: 28px;
+            overflow: hidden;
+        }
+
+        tr.noBorder td {
+            border: 0;
+        }
+
+        tr:hover {
+            background-color: #FFFF99;
+        }
+    </style>
+
+    <div class="grabTable">
+        <table id="grabTable">
+            <thead>
+                <tr style="text-align:center;">
+                    <th>Move Name</th>
+                    <th>Command</th>
+                    <th>Hit Level</th>
+                    <th>Damage</th>
+                    <th>Startup<BR>Frame</th>
+                    <th>Break</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+
+            <tbody id="grab" style="text-align:center;""></tbody>
+        </table>
+    </div>
+
+    <!-- Bottom navigation bar -->
+    <div class="charNavbar" id="myCharNavbar">
+        <a href="{% url 'compendiums-kunimitsu' %}">Movelist</a>
+        <a href="{% url 'compendiums-kunimitsu-grabs' %}" class="active">Grabs</a>
+        <a href="{% url 'compendiums-kunimitsu-punishment' %}">Punishment</a>
+        <a href="{% url 'compendiums-kunimitsu-combos' %}">Combos</a>
+        <a href="{% url 'compendiums-kunimitsu-wall' %}">Wall/Floor</a>
+        <a href="{% url 'compendiums-kunimitsu-resource' %}">Players/Resources</a>
+        <a href="#top">Top</a>
+        <a href="javascript:void(0);" style="font-size:16px;" class="icon" onclick="myFunction()">&#9776;</a>
+    </div>
+
+    <!-- Pulls data from google spreadsheet json and inserts it into table body. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $.getJSON("https://spreadsheets.google.com/feeds/cells/1UuJdHsmVh8pBRv5ZEPaRQg-JKWsQePR_D3feJiXKh6k/2/public/full?alt=json", function (data) {
+
+            var sheetData = data.feed.entry;
+
+            var i;
+            for (i = 7; i < sheetData.length; i+=7) {
+                var movename = sheetData[i]['gs$cell']['$t'];
+                var command = sheetData[i+1]['gs$cell']['$t'];
+                var hitLevel = sheetData[i+2]['gs$cell']['$t'];
+                var damage = sheetData[i+3]['gs$cell']['$t'];
+                var startframe = sheetData[i+4]['gs$cell']['$t'];
+                var broker = sheetData[i+5]['gs$cell']['$t'];
+                var notes = sheetData[i+6]['gs$cell']['$t'];
+
+                if (sheetData[i+6]['gs$cell']['inputValue'].includes("HYPERLINK")) {
+                    var url = /"(.*?)"/.exec(sheetData[i+6]['gs$cell']['inputValue'])[1];
+
+                    document.getElementById('grab').innerHTML += ('<tr>'+'<td>'+movename+'</td>'+'<td>'+command+'</td>'+'<td>'+hitLevel+'</td>'+'<td>'+damage+'</td>'
+                        +'<td>'+startframe+'</td>'+'<td>'+broker+'</td>'+'<td>'+'<a href="'+url+'" target="_blank">'+notes+'</a>'+'</td>'+'</tr>');
+                } else {
+                document.getElementById('grab').innerHTML += ('<tr>'+'<td>'+movename+'</td>'+'<td>'+command+'</td>'+'<td>'+hitLevel+'</td>'+'<td>'+damage+'</td>'
+                    +'<td>'+startframe+'</td>'+'<td>'+broker+'</td>'+'<td>'+notes+'</td>'+'</tr>');
+                }
+            }
+        });
+    </script>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myCharNavbar");
+            if (x.className === "charNavbar") {
+                x.className += " responsive";
+            } else {
+                x.className = "charNavbar";
+            }
+        }
+    </script>
+{% endblock content %}

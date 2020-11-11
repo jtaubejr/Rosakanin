@@ -68,6 +68,25 @@ def juliaWall(request):
 def juliaResource(request):
     return render(request, 'compendiums/Julia/juliaResource.html', {'title': 'Julia Players/Resources'})
 
+#This is the Kunimitsu pageself.
+def kunimitsu(request):
+    return render(request, 'compendiums/Kunimitsu/kunimitsu.html', {'title': 'Kunimitsu'})
+
+def kunimitsuGrabs(request):
+    return render(request, 'compendiums/Kunimitsu/kunimitsuGrabs.html', {'title': 'Kunimitsu Grabs'})
+
+def kunimitsuPunishment(request):
+    return render(request, 'compendiums/Kunimitsu/kunimitsuPunishment.html', {'title': 'Kunimitsu Punishment'})
+
+def kunimitsuCombos(request):
+    return render(request, 'compendiums/Kunimitsu/kunimitsuCombos.html', {'title': 'Kunimitsu Combos'})
+
+def kunimitsuWall(request):
+    return render(request, 'compendiums/Kunimitsu/kunimitsuWall.html', {'title': 'Kunimitsu Wall/Floor'})
+
+def kunimitsuResource(request):
+    return render(request, 'compendiums/Kunimitsu/kunimitsuResource.html', {'title': 'Kunimitsu Players/Resources'})
+
 #This is the Leo Kliesen pageself.
 def leo(request):
     return render(request, 'compendiums/leo.html', {'title': 'Leo Kliesen'})
