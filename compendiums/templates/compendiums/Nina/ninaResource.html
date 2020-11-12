@@ -101,18 +101,9 @@
                     <td>Twitter</td>
                     <td>Youtube</td>
                 </tr>
-                <tr>
-                    <td>AFriendlyTree</td>
-                    <td><a target="_blank" rel="noopener noreferrer" href="https://www.twitch.tv/afriendlytree">https://www.twitch.tv/afriendlytree</a></td>
-                    <td><a target="_blank" rel="noopener noreferrer" href="https://twitter.com/AFriendlyTree">https://twitter.com/AFriendlyTree</a></td>
-                    <td><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/channel/UCSRzwAQrLpmRHitZ7Ma2SRg/">https://www.youtube.com/channel/UCSRzwAQrLpmRHitZ7Ma2SRg/</a></td>
-                </tr>
-                <tr>
-                    <td>Noname (노네임)</td>
-                    <td><a target="_blank" rel="noopener noreferrer" href="https://www.twitch.tv/noname_song">https://www.twitch.tv/noname_song</a></td>
-                    <td></td>
-                    <td><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/channel/UCO2AivxYZu9dkY4DhLpwIbQ">https://www.youtube.com/channel/UCO2AivxYZu9dkY4DhLpwIbQ</a></td>
-                </tr>
+            </tbody>
+            <tbody class="hoverBody" id="resource" style="text-align:center;"></tbody>
+            <tbody class="hoverBody" style="text-align:center;">
                 <tr><td colspan="4"></td></tr>
                 <tr style="background:#444444;color:white;">
                     <td colspan="4"><a target="_blank" rel="noopener noreferrer" href="http://www.tekkenzaibatsu.com/forums/showthread.php?threadid=132791" style="color:white;">
@@ -145,22 +136,44 @@
                     <td rowspan="3">Noname (노네임)</td>
                     <td><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=wm4A64mwsRE">Knowing Nina's Moves</a></td>
                     <td>-</td>
-                    <td></td>
+                    <td>-</td>
                 </tr>
                 <tr>
                     <td><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=P3-jfuIsjAE">Nina's Combos</a></td>
                     <td>-</td>
-                    <td></td>
+                    <td>-</td>
                 </tr>
                 <tr>
                     <td><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=HnHR-33R6e0">Maneuvering with Nina</a></td>
                     <td>-</td>
-                    <td></td>
+                    <td>-</td>
                 </tr>
 
             </tbody>
         </table>
     </div>
+
+    <!-- Pulls data from google spreadsheet json and inserts it into table body. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $.getJSON("https://spreadsheets.google.com/feeds/cells/1N_XIfqnjUbaycJW90sxwAfIussRDIjLMLQsqsw2vFq4/7/public/full?alt=json", function (data) {
+
+            var sheetData = data.feed.entry;
+
+            var i;
+            for (i = 4; i < sheetData.length-21; i+=4) {
+                var streamer = sheetData[i]['gs$cell']['$t'];
+                var twitch = sheetData[i+1]['gs$cell']['$t'];
+                var twitter = sheetData[i+2]['gs$cell']['$t'];
+                var youtube = sheetData[i+3]['gs$cell']['$t'];
+
+                document.getElementById('resource').innerHTML += ('<tr>'+'<td>'+streamer+'</td>'+'<td>'
+                    +'<a href="'+twitch+'" target="_blank" rel="noopener noreferrer">'+twitch+'</a>'+'</td>'+'<td>'
+                    +'<a href="'+twitter+'" target="_blank" rel="noopener noreferrer">'+twitter+'</a>'+'</td>'+'<td>'
+                    +'<a href="'+youtube+'" target="_blank" rel="noopener noreferrer">'+youtube+'</a>'+'</td>'+'</tr>');
+            }
+        });
+    </script>
 
     <!-- Bottom navigation bar -->
     <div class="charNavbar" id="myCharNavbar">
