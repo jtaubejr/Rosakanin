@@ -60,7 +60,7 @@ def juliaCombos(request):
     return render(request, 'compendiums/Julia/juliaCombos.html', {'title': 'Julia Chang Combos'})
 
 def juliaOki(request):
-    return render(request, 'compendiums/Julia/juliaOki.html', {'title': 'Julia Chang Oki'})
+    return render(request, 'compendiums/Julia/juliaOki.html', {'title': 'Julia Chang Followups/Oki'})
 
 def juliaWall(request):
     return render(request, 'compendiums/Julia/juliaWall.html', {'title': 'Julia Chang Wall/Floor'})
@@ -83,6 +83,9 @@ def kunimitsuCombos(request):
 
 def kunimitsuWall(request):
     return render(request, 'compendiums/Kunimitsu/kunimitsuWall.html', {'title': 'Kunimitsu Wall/Floor'})
+
+def kunimitsuOki(request):
+    return render(request, 'compendiums/Kunimitsu/kunimitsuOki.html', {'title': 'Kunimitsu Followups/Oki'})
 
 def kunimitsuResource(request):
     return render(request, 'compendiums/Kunimitsu/kunimitsuResource.html', {'title': 'Kunimitsu Players/Resources'})
@@ -140,7 +143,7 @@ def zafinaCombos(request):
     return render(request, 'compendiums/Zafina/zafinaCombos.html', {'title': 'Zafina Combos'})
 
 def zafinaOki(request):
-    return render(request, 'compendiums/Zafina/zafinaOki.html', {'title': 'Zafina Oki'})
+    return render(request, 'compendiums/Zafina/zafinaOki.html', {'title': 'Zafina Followups/Oki'})
 
 def zafinaWall(request):
     return render(request, 'compendiums/Zafina/zafinaWall.html', {'title': 'Zafina Wall/Floor'})

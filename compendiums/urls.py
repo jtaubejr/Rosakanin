@@ -28,6 +28,7 @@ urlpatterns = [
     path('Kunimitsu/Punishment', views.kunimitsuPunishment, name='compendiums-kunimitsu-punishment'),
     path('Kunimitsu/Combos', views.kunimitsuCombos, name='compendiums-kunimitsu-combos'),
     path('Kunimitsu/Wall', views.kunimitsuWall, name='compendiums-kunimitsu-wall'),
+    path('Kunimitsu/Oki', views.kunimitsuOki, name='compendiums-kunimitsu-oki'),
     path('Kunimitsu/Resource', views.kunimitsuResource, name='compendiums-kunimitsu-resource'),
     path('Leo_Kliesen/', views.leo, name='compendiums-leo'),
     path('Negan/', views.negan, name='compendiums-negan'),
