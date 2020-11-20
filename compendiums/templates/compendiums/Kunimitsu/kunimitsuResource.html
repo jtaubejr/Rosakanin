@@ -121,7 +121,12 @@
                     <td>Notes</td>
                 </tr>
                 <tr>
-                    <td>Fergus</td>
+                    <td rowspan="2">Fergus</td>
+                    <td><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=QZWkf-TjkGg">Shinobi Secrets - Tekken 7 Kunimitsu Tutorial</a></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
                     <td><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=EmV0NUl5aks">How To Apply Kunimitsu's Backturn Mixups</a></td>
                     <td></td>
                     <td></td>
@@ -138,7 +143,7 @@
             var sheetData = data.feed.entry;
 
             var i;
-            for (i = 4; i < sheetData.length-9; i+=4) {
+            for (i = 4; i < sheetData.length-12; i+=4) {
                 var streamer = sheetData[i]['gs$cell']['$t'];
                 var twitch = sheetData[i+1]['gs$cell']['$t'];
                 var twitter = sheetData[i+2]['gs$cell']['$t'];
